@@ -16,7 +16,7 @@
       </div>
 
       <div class="overview__table">
-        <dogear-box style="overflow: hidden">
+        <dogear-box>
           <el-table :data="tableData">
             <el-table-column align="center" prop="status" label="状态" width="60" />
             <el-table-column align="center" prop="username" label="姓名" />
@@ -144,6 +144,7 @@ export default {
 }
 
 .overview-slider {
+  width: 0;
   flex:0 0 307px;
 }
 

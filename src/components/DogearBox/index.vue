@@ -40,9 +40,34 @@ export default {
   background: rgba(7, 18, 52, 0.7);
   mix-blend-mode: normal;
   // opacity: 0.7;
-  border: 1px solid #155EAF;
+  border: 1px solid transparent;
   box-sizing: border-box;
   box-shadow: inset 2px 2px 20px rgba(52, 3, 191, 0.8);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #155EAF;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #0f0a23;
+    border-color: #155EAF;
+    border-width: 1px;
+    border-style: none none solid none;
+    transform: rotate(45deg) translateY(-35px);
+  }
 }
 
 .dogear-header {
