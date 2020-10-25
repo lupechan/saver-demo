@@ -11,14 +11,12 @@
         <tips-box v-for="tip in tipsData" :key="tip.name" :name="tip.name" :value="tip.value" />
       </div>
 
-      <div class="ovweview__map">
-        <dogear-box :no-scoll="true">
-          <img style="width: 100%" src="@/assets/map_images/01.jpg">
-        </dogear-box>
+      <div class="overview__map">
+        <dogear-box :no-scoll="true" class="overview__mapbg" :style="`background-image:url(${mapbg})`" />
       </div>
 
       <div class="overview__table">
-        <dogear-box style="overflow: hidden">
+        <dogear-box>
           <el-table :data="tableData">
             <el-table-column align="center" prop="status" label="状态" width="60" />
             <el-table-column align="center" prop="username" label="姓名" />
@@ -48,6 +46,8 @@ import DogearBox from '@/components/DogearBox'
 import HumenInfo from '@/components/HumenInfo'
 import MsgList from '@/components/MsgList'
 import TipsBox from './components/TipsBox'
+
+import mapbg from '@/assets/map_images/01.jpg'
 
 import Mock, { Random } from 'mockjs'
 
@@ -100,6 +100,9 @@ const data = Mock.mock({
 export default {
   name: 'Overview',
   components: { DogearBox, HumenInfo, TipsBox, MsgList },
+  data() {
+    return { mapbg }
+  },
   computed: {
     focusData() {
       return data.focus
@@ -141,6 +144,7 @@ export default {
 }
 
 .overview-slider {
+  width: 0;
   flex:0 0 307px;
 }
 
@@ -153,9 +157,14 @@ export default {
   display: flex;
 }
 
-.ovweview__map {
+.overview__map {
   height: 0;
   flex: auto;
+}
+
+.overview__mapbg {
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .overview__table {
