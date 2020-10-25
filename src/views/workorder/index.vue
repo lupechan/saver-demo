@@ -28,12 +28,12 @@
       <div class="content-card">
         <div v-for="(item,index) in cardData " :key="index" :class="{'b': index%num==(num-1)}" class="card-item">
           <div class="card-item-logo">
-            <img src="" alt="" class="avatar-img">
+            <img :src="item.imgUrl" alt="" class="avatar-img">
           </div>
-          <p class="captain-name">张三 <span>(队长)</span></p>
-          <p class="telephone"><span>手机号码：</span> 15287492152</p>
-          <p class="lasted-time"><span>最新定位时间：</span> 2020.11.01 12:36</p>
-          <p class="skill"><span>技能：</span> 领导</p>
+          <p class="captain-name">{{item.captainName}} <span v-if="item.position">({{item.position}})</span></p>
+          <p class="telephone"><span>手机号码：</span> {{item.telephone}}</p>
+          <p class="lasted-time"><span>最新定位时间：</span> {{item.lastedTime}}</p>
+          <p class="skill"><span>技能：</span> {{item.skill}}</p>
         </div>
       </div>
     </div>
@@ -74,46 +74,44 @@ export default {
       }],
       cardData: [
         {
+          imgUrl: '/static/img/1.2caa09e2.png',
           captainName: '张三',
           position: '队长',
-          telephone: '15287492152',
+          telephone: '15287492156',
           lastedTime: '2020.11.01 12:36',
           skill: '领导'
         },
         {
-          captainName: '张三',
-          position: '队长',
-          telephone: '15287492152',
+          imgUrl: '/static/img/2.1f636acb.png',
+          captainName: '李四',
+          position: '副队长',
+          telephone: '15287492156',
           lastedTime: '2020.11.01 12:36',
-          skill: '领导'
+          skill: '狙击'
         },
         {
-          captainName: '张三',
-          position: '队长',
-          telephone: '15287492152',
+          imgUrl: '/static/img/3.99ac557d.png',
+          captainName: '王五',
+          position: '应急医务',
+          telephone: '15287492156',
           lastedTime: '2020.11.01 12:36',
-          skill: '领导'
+          skill: '狙击'
         },
         {
-          captainName: '张三',
-          position: '队长',
+          imgUrl: '/static/img/4.1facabf9.png',
+          captainName: '杨柳',
+          position: '队员',
           telephone: '15287492152',
           lastedTime: '2020.11.01 12:36',
-          skill: '领导'
+          skill: '谈判'
         },
         {
-          captainName: '张三',
-          position: '队长',
+          imgUrl: '/static/img/5.21fffb3f.png',
+          captainName: '王二',
+          position: '',
           telephone: '15287492152',
           lastedTime: '2020.11.01 12:36',
-          skill: '领导'
-        },
-        {
-          captainName: '张三',
-          position: '队长',
-          telephone: '15287492152',
-          lastedTime: '2020.11.01 12:36',
-          skill: '领导'
+          skill: '狙击'
         }
       ],
       num: 3
@@ -176,6 +174,7 @@ export default {
         top: 30px;
         width: 40px;
         height: 40px;
+        border-radius: 4px;
       }
       .captain-name {
         margin: 45px 0 0 80px;
