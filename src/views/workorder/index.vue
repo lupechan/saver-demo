@@ -44,6 +44,11 @@
 </template>
 <script>
 import $ from '../../jquery.min'
+import avatar_1 from '@/assets/map_images/1.png'
+import avatar_2 from '@/assets/map_images/2.png'
+import avatar_3 from '@/assets/map_images/3.png'
+import avatar_4 from '@/assets/map_images/4.png'
+import avatar_5 from '@/assets/map_images/5.png'
 export default {
   name: 'Workorder',
   data () {
@@ -74,7 +79,7 @@ export default {
       }],
       cardData: [
         {
-          imgUrl: '/static/img/1.2caa09e2.png',
+          imgUrl: avatar_1,
           captainName: '张三',
           position: '队长',
           telephone: '15287492156',
@@ -82,7 +87,7 @@ export default {
           skill: '领导'
         },
         {
-          imgUrl: '/static/img/2.1f636acb.png',
+          imgUrl: avatar_2,
           captainName: '李四',
           position: '副队长',
           telephone: '15287492156',
@@ -90,7 +95,7 @@ export default {
           skill: '狙击'
         },
         {
-          imgUrl: '/static/img/3.99ac557d.png',
+          imgUrl: avatar_3,
           captainName: '王五',
           position: '应急医务',
           telephone: '15287492156',
@@ -98,7 +103,7 @@ export default {
           skill: '狙击'
         },
         {
-          imgUrl: '/static/img/4.1facabf9.png',
+          imgUrl: avatar_4,
           captainName: '杨柳',
           position: '队员',
           telephone: '15287492152',
@@ -106,7 +111,7 @@ export default {
           skill: '谈判'
         },
         {
-          imgUrl: '/static/img/5.21fffb3f.png',
+          imgUrl: avatar_5,
           captainName: '王二',
           position: '',
           telephone: '15287492152',
