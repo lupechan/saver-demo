@@ -30,9 +30,7 @@
 
     <div class="tracing-main">
       <div class="tracing__map">
-        <dogear-box :no-scoll="true">
-          <img style="width: 100%" src="@/assets/map_images/02.png">
-        </dogear-box>
+        <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`" />
       </div>
     </div>
 
@@ -52,6 +50,8 @@
 import DogearBox from '@/components/DogearBox'
 import HumenInfo from '@/components/HumenInfo'
 import MsgList from '@/components/MsgList'
+
+import mapbg from '@/assets/map_images/02.png'
 
 import Mock, { Random } from 'mockjs'
 
@@ -94,7 +94,8 @@ export default {
   components: { DogearBox, HumenInfo, MsgList },
   data() {
     return {
-      statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态']
+      statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态'],
+      mapbg
     }
   },
   computed: {
@@ -116,6 +117,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .tracing-container {
   display: flex;
   height: calc(100vh - 110px);
@@ -150,6 +152,11 @@ export default {
 .tracing__map {
   height: 0;
   flex: auto;
+}
+
+.tracing__mapbg {
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .tracing__team {

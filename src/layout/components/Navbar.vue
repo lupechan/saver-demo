@@ -3,6 +3,16 @@
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
+    <el-menu
+      :default-active="activeIndex"
+      background-color="#12123A"
+      text-color="#FFFFFF77"
+      active-text-color="#FFF"
+      mode="horizontal"
+    >
+      <el-menu-item index="1">海外救援情况总览</el-menu-item>
+      <el-menu-item index="2">报警救援全程跟踪</el-menu-item>
+    </el-menu>
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -41,6 +51,11 @@ export default {
     // Breadcrumb,
     Hamburger
   },
+  data() {
+    return {
+      activeIndex: '1'
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
@@ -66,6 +81,14 @@ export default {
   position: relative;
   background: #12123A;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
+
+  .el-menu-item {
+    height: 50px;
+
+    &.is-active {
+      border-color: #2762FC !important;
+    }
+  }
 
   .hamburger-container {
     line-height: 46px;
