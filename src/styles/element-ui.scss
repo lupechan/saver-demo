@@ -47,3 +47,16 @@
 .el-range-separator {
   box-sizing: content-box;
 }
+
+.el-table {
+  background-color: transparent;
+  color: white;
+
+  th, tr {
+    background-color: transparent;
+
+    &:hover > td {
+      background-color: transparent !important;
+    }
+  }
+}
