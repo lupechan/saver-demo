@@ -148,7 +148,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .workorder-header {
-  margin: 28px 48px;
+  margin: 28px 48px 11px 48px;
   .header-title {
     margin-bottom: 40px;
     .border-line {
