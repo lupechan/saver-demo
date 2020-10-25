@@ -1,18 +1,17 @@
-@import "./variables.scss";
-@import "./mixin.scss";
-@import "./transition.scss";
-@import "./element-ui.scss";
-@import "./sidebar.scss";
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
 
 body {
   height: 100%;
-  background-color: #0f0a23;
+  background-color: #0F0A23;
   color: white;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
-    Microsoft YaHei, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -66,79 +65,26 @@ div:focus {
 .app-container {
   padding: 20px;
 }
-
-.workorder-page {
-  * {
-    background-color: transparent;
+// 报警日志及救援记录
+.page-main{
+  .head{
+    margin: 28px 0 0 48px;
+    display: flex;
+    align-items: center;
+    .square{
+      width: 4px;
+      height: 14px;
+      background: #2B7DF8;
+    }
   }
-  .el-table {
-    color: #fff;
+  .head-select{
+    margin: 32px 0 0 48px;
+    display: flex;
+    align-items: center;
   }
-
-  .el-table td,
-  .el-table th {
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    background-color: #0f0a23;
-  }
-
-  .el-table td,
-  .el-table th.is-leaf {
-    border-bottom: 1px solid #155eaf;
-  }
-
-  .el-table--border td,
-  .el-table--border th,
-  .el-table__body-wrapper
-    .el-table--border.is-scrolling-left
-    ~ .el-table__fixed {
-    border-right: 1px solid #155eaf;
-  }
-  .el-table--border,
-  .el-table--group {
-    border: 1px solid #155eaf;
-  }
-
-  .el-table--border::after,
-  .el-table--group::after,
-  .el-table::before {
-    background-color: #155eaf;
-  }
-  .el-table--enable-row-hover .el-table__body tr:hover > td {
-    background-color: #000;
-  }
-  .el-input__inner {
-    border: 1px solid #155eaf;
-    color: #fff !important;
-  }
-  .el-input__inner::-webkit-input-placeholder {
-    color: #fff;
-  }
-  .el-input__inner::-moz-input-placeholder {
-    color: #fff;
-  }
-  .el-input__inner::-ms-input-placeholder {
-    color: #fff;
-  }
-  .el-select:hover .el-input__inner {
-    border-color: #155eaf;
-  }
-}
-.el-select-dropdown {
-  border-color: #155eaf;
-  background-color: #0e0c23;
-}
-.el-select-dropdown__item {
-  color: #fff;
-}
-.el-select-dropdown__item.hover,
-.el-select-dropdown__item:hover {
-  background-color: rgb(0, 0, 0);
-}
-.el-popper[x-placement^="bottom"] .popper__arrow {
-  border-bottom-color: #155eaf;
-}
-.el-popper[x-placement^="bottom"] .popper__arrow::after {
-  border-bottom-color: #155eaf;
+  .el-input__inner{
+    background-color: rgba(7, 18, 52, 0.7);
+    color: #ffffff;
+    border: 1px solid #155EAF;
+   }
 }
