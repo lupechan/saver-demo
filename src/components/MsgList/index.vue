@@ -1,6 +1,9 @@
 <template>
   <div class="msglist-block">
-    <div v-for="item in data" :key="item" class="msglist__title">{{ item.title }}</div>
+    <div v-for="(item, index) in data" :key="index" class="msglist-item">
+      <div class="msglist__title">{{ item.title }}</div>
+      <div class="msglist__subtitle">{{ item.subTitle }}</div>
+    </div>
   </div>
 </template>
 
@@ -9,8 +12,8 @@ export default {
   name: 'MsgList',
   props: {
     data: {
-      type: Object,
-      default() { return {} }
+      type: Array,
+      default() { return [] }
     }
   }
 }
@@ -21,14 +24,20 @@ export default {
   padding: 20px;
 }
 
+.msglist-item {
+  & + & {
+    margin-top: 25px;
+  }
+}
+
 .msglist__title {
   font-size: 14px;
-  line-height: 14px;
+  line-height: 1.2;
   color: white;
   position: relative;
 
-  & + & {
-    margin-top: 25px;
+  & + .msglist__subtitle {
+    margin-top: 8px;
   }
 
   &::after {
@@ -40,5 +49,12 @@ export default {
     left: -10px;
     background-color: #0084FF;
   }
+}
+
+.msglist__subtitle {
+  font-size: 12px;
+  line-height: 12px;
+  color: white;
+  opacity: 0.5;
 }
 </style>

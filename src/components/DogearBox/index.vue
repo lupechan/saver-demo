@@ -5,6 +5,7 @@
         <div class="dogear-title">{{ title }}</div>
       </div>
     </slot>
+    <slot name="header-append" />
 
     <div class="dogear-body" :style="myStyle">
       <slot />

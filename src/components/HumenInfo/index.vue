@@ -3,8 +3,10 @@
     <div class="humeninfo-user humeninfo-item">
       <div class="humeninfo-user__avatar" />
       <div class="humeninfo-user__title">
-        {{ info.username }}（{{ info.status }}）
+        <span>{{ info.username }}</span>
+        <span v-show="'status' in info">（{{ info.status }}）</span>
       </div>
+      <slot name="userinfo-append" />
     </div>
 
     <div v-for="item in validInfo" :key="item" class="humeninfo-item">
@@ -60,6 +62,7 @@ export default {
 }
 
 .humeninfo-item {
+  position: relative;
   font-size: 14px;
   line-height: 14px;
   opacity: 0.8;
