@@ -30,6 +30,7 @@ export default {
   flex-wrap: nowrap;
   height: 66px;
   padding: 20px;
+  overflow: hidden;
 
   background: rgba(7, 18, 52, 0.7);
   mix-blend-mode: normal;

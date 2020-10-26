@@ -12,7 +12,22 @@
       </div>
 
       <div class="overview__map">
-        <dogear-box :no-scoll="true" class="overview__mapbg" :style="`background-image:url(${mapbg})`" />
+        <dogear-box :no-scoll="true" class="overview__mapbg" :style="`background-image:url(${mapbg})`">
+          <div class="overview__mapfront">
+            <img :src="map" width="100%">
+            <template v-for="item in helpSeekerData">
+              <stickies
+                :key="item.userId"
+                :pos="[20, 20]"
+                :title="`${item.username}（${item.status}）`"
+                :sub-title="item.tel"
+                active-trigger="always"
+              >
+                <span>最新定位时间：2020.11.01 17:33:26</span>
+              </stickies>
+            </template>
+          </div>
+        </dogear-box>
       </div>
 
       <div class="overview__table">
@@ -45,9 +60,11 @@
 import DogearBox from '@/components/DogearBox'
 import HumenInfo from '@/components/HumenInfo'
 import MsgList from '@/components/MsgList'
+import Stickies from '@/components/Stickies'
 import TipsBox from './components/TipsBox'
 
-import mapbg from '@/assets/map_images/01.jpg'
+import mapbg from '@/assets/map_images/mapbg.png'
+import map from '@/assets/map_images/map01.png'
 
 import Mock, { Random } from 'mockjs'
 
@@ -99,9 +116,9 @@ const data = Mock.mock({
 
 export default {
   name: 'Overview',
-  components: { DogearBox, HumenInfo, TipsBox, MsgList },
+  components: { DogearBox, HumenInfo, TipsBox, MsgList, Stickies },
   data() {
-    return { mapbg }
+    return { mapbg, map }
   },
   computed: {
     focusData() {
@@ -163,8 +180,10 @@ export default {
 }
 
 .overview__mapbg {
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+  justify-content: center;
+  padding: 20px;
 }
 
 .overview__table {

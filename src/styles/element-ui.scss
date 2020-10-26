@@ -60,3 +60,25 @@
     }
   }
 }
+
+.el-popover {
+  color: white;
+  background: rgba(9, 20, 46, 0.75);
+  border: 1px solid #4D4D60;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.popper__arrow {
+  // border-color: #4D4D60 !important;
+  &::after {
+    border-color: rgba(9, 20, 46, 0.75) !important
+  }
+}
+
+.el-popper[x-placement^=top] {
+  & > .popper__arrow::after {
+    border-color: rgba(9, 20, 46, 0.75) !important;
+    bottom: 0;
+  }
+}

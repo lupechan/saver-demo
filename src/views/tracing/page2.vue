@@ -30,7 +30,36 @@
 
     <div class="tracing-main">
       <div class="tracing__map">
-        <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`" />
+        <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`">
+          <div style="width:100%;">
+            <img src="@/assets/map_images/Group_90.png" style="position:absolute;top:40%;left:24%">
+            <img src="@/assets/map_images/Group_102.png" style="position:absolute;bottom:20px;right:20px">
+            <img src="@/assets/map_images/Group_146.png" style="position:absolute;top:calc(40% + 100px);left:calc(24% + 105px)">
+            <div style="position:absolute;top:50%;left:10%">
+              <img src="@/assets/map_images/Vector_51.png" style="position:absolute;top:0;left:0">
+              <img src="@/assets/map_images/Vector_5.png" style="position:absolute;top:20px;left:20px">
+            </div>
+            <div style="position:absolute;top:66%;left:53%">
+              <img src="@/assets/map_images/Vector_61.png" style="position:absolute;top:0;left:0">
+              <img src="@/assets/map_images/Vector_6.png" style="position:absolute;top:20px;left:40px">
+            </div>
+            <div style="position:absolute;top:23%;left:55%">
+              <img src="@/assets/map_images/Vector_41.png" style="position:absolute;top:0;left:0">
+              <img src="@/assets/map_images/Vector_4.png" style="position:absolute;top:100px;left:30px">
+            </div>
+          </div>
+          <template v-for="item in rescueTeamData.members">
+            <stickies
+              :key="item.userId"
+              :pos="[20, 20]"
+              :title="`搜救组： ${ rescueTeamData.name }`"
+              :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
+            >
+              <div>搜救能力：谈判、狙击、医务</div>
+              <div>携带装备：搜救犬、无人机</div>
+            </stickies>
+          </template>
+        </dogear-box>
       </div>
     </div>
 
@@ -50,9 +79,10 @@
 import DogearBox from '@/components/DogearBox'
 import HumenInfo from '@/components/HumenInfo'
 import MsgList from '@/components/MsgList'
+import Stickies from '@/components/Stickies'
 
 import Mock, { Random } from 'mockjs'
-import mapbg from '@/assets/map_images/03.jpg'
+import mapbg from '@/assets/map_images/map02.png'
 
 const data = Mock.mock({
   'helpSeeker': {
@@ -90,7 +120,7 @@ const data = Mock.mock({
 
 export default {
   name: 'Tracing2',
-  components: { DogearBox, HumenInfo, MsgList },
+  components: { DogearBox, HumenInfo, MsgList, Stickies },
   data() {
     return {
       statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态'],
@@ -153,7 +183,7 @@ export default {
 }
 
 .tracing__mapbg {
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 

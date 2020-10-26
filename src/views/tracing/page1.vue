@@ -30,7 +30,25 @@
 
     <div class="tracing-main">
       <div class="tracing__map">
-        <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`" />
+        <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`">
+          <div style="width:100%;">
+            <img src="@/assets/map_images/Group_90.png" style="position:absolute;top:40%;left:24%">
+            <img src="@/assets/map_images/Group_101.png" style="position:absolute;bottom:20px;right:20px">
+            <img src="@/assets/map_images/Group_146.png" style="position:absolute;top:calc(40% + 100px);left:calc(24% + 105px)">
+          </div>
+          <template v-for="item in rescueTeamData.members">
+            <stickies
+              :key="item.userId"
+              :pos="[20, 20]"
+              active-color="#0085FF"
+              :title="`搜救组： ${ rescueTeamData.name }`"
+              :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
+            >
+              <div>搜救能力：谈判、狙击、医务</div>
+              <div>携带装备：搜救犬、无人机</div>
+            </stickies>
+          </template>
+        </dogear-box>
       </div>
     </div>
 
@@ -50,8 +68,9 @@
 import DogearBox from '@/components/DogearBox'
 import HumenInfo from '@/components/HumenInfo'
 import MsgList from '@/components/MsgList'
+import Stickies from '@/components/Stickies'
 
-import mapbg from '@/assets/map_images/02.png'
+import mapbg from '@/assets/map_images/map02.png'
 
 import Mock, { Random } from 'mockjs'
 
@@ -91,7 +110,7 @@ const data = Mock.mock({
 
 export default {
   name: 'Tracing1',
-  components: { DogearBox, HumenInfo, MsgList },
+  components: { DogearBox, HumenInfo, MsgList, Stickies },
   data() {
     return {
       statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态'],
@@ -155,7 +174,7 @@ export default {
 }
 
 .tracing__mapbg {
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
