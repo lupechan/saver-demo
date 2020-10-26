@@ -2,7 +2,7 @@
   <div class="workorder-page">
     <div class="workorder-header">
       <div class="header-title">
-        <i class="border-line"></i>
+        <i class="border-line" />
         指派救援工单
       </div>
       <div class="header-content">
@@ -10,17 +10,13 @@
           <el-table-column label="搜救组" width="400">
             <template v-slot="{row}">
               <el-select v-model="row.rescueGroup" style="width:300px" placeholder="某某搜救组">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </template>
           </el-table-column>
-          <el-table-column prop="captain" label="队长" width="240" style="text-align:center">
-          </el-table-column>
-          <el-table-column prop="people" label="人数" width="240">
-          </el-table-column>
-          <el-table-column prop="distance" label="与救助人员距离">
-          </el-table-column>
+          <el-table-column prop="captain" label="队长" width="240" style="text-align:center" />
+          <el-table-column prop="people" label="人数" width="240" />
+          <el-table-column prop="distance" label="与救助人员距离" />
         </el-table>
       </div>
     </div>
@@ -30,10 +26,10 @@
           <div class="card-item-logo">
             <img :src="item.imgUrl" alt="" class="avatar-img">
           </div>
-          <p class="captain-name">{{item.captainName}} <span v-if="item.position">({{item.position}})</span></p>
-          <p class="telephone"><span>手机号码：</span> {{item.telephone}}</p>
-          <p class="lasted-time"><span>最新定位时间：</span> {{item.lastedTime}}</p>
-          <p class="skill"><span>技能：</span> {{item.skill}}</p>
+          <p class="captain-name">{{ item.captainName }} <span v-if="item.position">({{ item.position }})</span></p>
+          <p class="telephone"><span>手机号码：</span> {{ item.telephone }}</p>
+          <p class="lasted-time"><span>最新定位时间：</span> {{ item.lastedTime }}</p>
+          <p class="skill"><span>技能：</span> {{ item.skill }}</p>
         </div>
       </div>
     </div>
@@ -51,7 +47,7 @@ import avatar_4 from '@/assets/map_images/4.png'
 import avatar_5 from '@/assets/map_images/5.png'
 export default {
   name: 'Workorder',
-  data () {
+  data() {
     return {
       // 搜救表格数据
       tableData: [{
@@ -122,10 +118,10 @@ export default {
       num: 3
     }
   },
-  updated () {
+  updated() {
     this.elect()
   },
-  mounted () {
+  mounted() {
     window.addEventListener('resize', () => {
       this.elect()
     })
@@ -133,13 +129,13 @@ export default {
   },
   methods: {
     // 自适应盒子大小
-    elect () {
+    elect() {
       this.num = Math.round($('.content-card').width() / 428)
       var wid = 'calc(' + 100 / this.num + '%' + ' - ' + (this.num - 1) / this.num * 12 + 'px' + ')'
       var ii = 0
       var inter = setInterval(() => {
         $('.card-item').css({
-          width: wid,
+          width: wid
         })
         ii++
         if ($('.card-item').length > 0 || ii > 1000) {
@@ -147,7 +143,7 @@ export default {
           inter = null
         }
       }, 1)
-    },
+    }
   }
 }
 </script>
@@ -161,6 +157,9 @@ export default {
       border-left: 3px solid #2b7df8;
     }
   }
+  .header-content {
+    box-shadow: 2px 2px 20px 0px rgba(52, 3, 191, 0.8) inset;
+  }
 }
 .workorder-content {
   margin: 0 48px;
@@ -168,6 +167,7 @@ export default {
     display: flex;
     flex-flow: row wrap;
     .card-item {
+      box-shadow: 2px 2px 20px 0px rgba(52, 3, 191, 0.8) inset;
       position: relative;
       height: 202px;
       margin-top: 21px;

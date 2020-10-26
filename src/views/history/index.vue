@@ -73,12 +73,12 @@
       </div>
     </div>
     <div class="head-search">
-      <el-input v-model="inputData" style="margin-right:22px" placeholder="请输入姓名或手机号或用户账号" />
-      <el-button type="primary" style="margin-right:524px">搜索</el-button>
+      <el-input v-model="inputData" style="width:60%;margin-right:22px" placeholder="请输入姓名或手机号或用户账号" />
+      <el-button class="search-button" type="primary">搜索</el-button>
     </div>
     <el-table
       :data="tableData"
-      style="width: 100%;margin:30px 0 0 48px"
+      style="margin:30px 48px 0px 48px"
     >
       <el-table-column prop="alarmNumber" label="报警编号" width="108" />
       <el-table-column
@@ -141,6 +141,14 @@
         </template>
       </el-table-column>
     </el-table>
+    <div>
+      <el-pagination
+        style="margin:30px 48px 0px 990px"
+        background
+        layout="prev, pager, next"
+        :total="1000"
+      />
+    </div>
   </div>
 </template>
 <script>
