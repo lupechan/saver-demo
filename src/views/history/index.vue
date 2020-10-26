@@ -76,74 +76,72 @@
       <el-input v-model="inputData" style="width:60%;margin-right:22px" placeholder="请输入姓名或手机号或用户账号" />
       <el-button class="search-button" type="primary">搜索</el-button>
     </div>
-    <el-table
-      :data="tableData"
-      style="margin:30px 48px 0px 48px"
-    >
-      <el-table-column prop="alarmNumber" label="报警编号" width="108" />
-      <el-table-column
-        prop="grade"
-        label="报警等级"
-        width="82"
-      />
-      <el-table-column
-        prop="alarmType"
-        label="报警类型"
-        width="100"
-      />
-      <el-table-column
-        prop="country"
-        label="国家"
-        width="104"
-      />
-      <el-table-column
-        prop="city"
-        label="城市"
-        width="104"
-      />
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="148"
-      />
-      <el-table-column
-        prop="time"
-        label="时间"
-        width="96"
-      />
-      <el-table-column
-        prop="helper"
-        label="求救人"
-        width="112"
-      />
-      <el-table-column
-        prop="phoneNumber"
-        label="求救人手机号"
-        width="150"
-      />
-      <el-table-column
-        prop="rescueMan"
-        label="救援人员"
-        width="112"
-      />
-      <el-table-column
-        prop="rescueResult"
-        label="救援结果"
-        width="114"
-      />
-      <el-table-column
-        prop="opration"
-        label="操作"
-        width="114"
+    <div class="head-table">
+      <el-table
+        :data="tableData"
       >
-        <template slot-scope="scope">
-          <el-button type="text" size="medium" @click="handleClick(scope.row)">查看详情</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div>
+        <el-table-column prop="alarmNumber" label="报警编号" width="108" />
+        <el-table-column
+          prop="grade"
+          label="报警等级"
+          width="82"
+        />
+        <el-table-column
+          prop="alarmType"
+          label="报警类型"
+          width="100"
+        />
+        <el-table-column
+          prop="country"
+          label="国家"
+          width="104"
+        />
+        <el-table-column
+          prop="city"
+          label="城市"
+          width="104"
+        />
+        <el-table-column
+          prop="date"
+          label="日期"
+          width="148"
+        />
+        <el-table-column
+          prop="time"
+          label="时间"
+          width="96"
+        />
+        <el-table-column
+          prop="helper"
+          label="求救人"
+          width="112"
+        />
+        <el-table-column
+          prop="phoneNumber"
+          label="求救人手机号"
+          width="150"
+        />
+        <el-table-column
+          prop="rescueMan"
+          label="救援人员"
+          width="112"
+        />
+        <el-table-column
+          prop="rescueResult"
+          label="救援结果"
+          width="114"
+        />
+        <el-table-column
+          prop="opration"
+          label="操作"
+        >
+          <template slot-scope="scope">
+            <el-button type="text" size="medium" @click="handleClick(scope.row)">查看详情</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
       <el-pagination
-        style="margin:30px 48px 0px 990px"
+        style="margin:30px -6px 0px 0px;float:right"
         background
         layout="prev, pager, next"
         :total="1000"
