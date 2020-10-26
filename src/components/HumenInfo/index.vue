@@ -1,7 +1,7 @@
 <template>
   <div class="humeninfo-block">
     <div class="humeninfo-user humeninfo-item">
-      <div class="humeninfo-user__avatar" />
+      <div class="humeninfo-user__avatar" :style="`background-image:url(${avatar})`" />
       <div class="humeninfo-user__title">
         <span>{{ info.username }}</span>
         <span v-show="'status' in info">（{{ info.status }}）</span>
@@ -29,6 +29,9 @@ const infoWords = [
   { key: 'history', name: '既往病史' },
   { key: 'allergen', name: '过敏原' }
 ]
+
+import defaultAvatar from '@/assets/map_images/1.png'
+
 export default {
   name: 'HumenInfo',
   props: {
@@ -38,6 +41,9 @@ export default {
     }
   },
   computed: {
+    avatar() {
+      return defaultAvatar
+    },
     validInfo() {
       const info = []
       infoWords.forEach(word => {
@@ -83,6 +89,8 @@ export default {
     margin-right: 10px;
     border: 1px solid #FFFFFF77;
     border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
   }
 
