@@ -52,6 +52,7 @@
             <stickies
               :key="item.userId"
               :pos="[20, 20]"
+              active-color="#0085FF"
               :title="`搜救组： ${ rescueTeamData.name }`"
               :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
             >
