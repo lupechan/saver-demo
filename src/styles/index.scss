@@ -93,7 +93,7 @@ div:focus {
     }
   }
   .el-table th {
-    background: rgba(29, 52, 124, 0.7);
+    background: rgba(29, 52, 124, 0.7) !important;
   }
   .head-select{
     margin: 32px 0 0 48px;
@@ -162,44 +162,7 @@ div:focus {
   border-bottom-color: #155eaf;
 }
 
-.el-table {
-  color: #fff;
-}
 
-.el-table td,
-.el-table th {
-  font-weight: 400;
-  color: #fff;
-  text-align: center;
-  background-color: #0f0a23;
-}
-
-.el-table td,
-.el-table th.is-leaf {
-  border: 1px solid #155eaf;
-}
-
-.el-table--border td,
-.el-table--border th,
-.el-table__body-wrapper
-  .el-table--border.is-scrolling-left
-  ~ .el-table__fixed {
-  border-right: 1px solid #155eaf;
-}
-.el-table--border,
-.el-table--group {
-  border: 1px solid #155eaf;
-}
-
-.el-table--border::after,
-.el-table--group::after,
-.el-table::before {
-  background-color: #155eaf;
-  width: 0;
-}
-.el-table--enable-row-hover .el-table__body tr:hover > td {
-  background-color: #000;
-}
 .el-input__inner {
   border: 1px solid #155eaf;
   color: #fff !important;
@@ -215,4 +178,44 @@ div:focus {
 }
 .el-select:hover .el-input__inner {
   border-color: #155eaf;
+}
+.page-main,.workorder-page {
+  .el-table {
+    color: #fff;
+  }
+  
+  .el-table td,
+  .el-table th {
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    background-color: transparent;
+  }
+  
+  .el-table td,
+  .el-table th.is-leaf {
+    border: 1px solid #155eaf;
+  }
+  
+  .el-table--border td,
+  .el-table--border th,
+  .el-table__body-wrapper
+    .el-table--border.is-scrolling-left
+    ~ .el-table__fixed {
+    border-right: 1px solid #155eaf;
+  }
+  .el-table--border,
+  .el-table--group {
+    border: 1px solid #155eaf;
+  }
+  
+  .el-table--border::after,
+  .el-table--group::after,
+  .el-table::before {
+    background-color: #155eaf;
+    width: 0;
+  }
+  .el-table--enable-row-hover .el-table__body tr:hover > td {
+    background-color: #000;
+  }
 }
