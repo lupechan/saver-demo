@@ -1,15 +1,18 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <!-- <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
+    <div style="padding: 0 30px"> <img src="@/assets/map_images/logo.png" alt="" style="flex: none"> </div>
     <el-menu
       :default-active="activeIndex"
       background-color="#12123A"
       text-color="#FFFFFF77"
       active-text-color="#FFF"
       mode="horizontal"
+      style="width:0;flex:auto;"
     >
+      <!-- <img src="@/assets/map_images/logo.png" alt=""> -->
       <el-menu-item index="1">海外救援情况总览</el-menu-item>
       <el-menu-item index="2">报警救援全程跟踪</el-menu-item>
     </el-menu>
@@ -76,6 +79,8 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  display: flex;
+  align-items: center;
   height: 50px;
   overflow: hidden;
   position: relative;
@@ -90,25 +95,25 @@ export default {
     }
   }
 
-  .hamburger-container {
-    line-height: 46px;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-    transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
+  // .hamburger-container {
+  //   line-height: 46px;
+  //   height: 100%;
+  //   float: left;
+  //   cursor: pointer;
+  //   transition: background .3s;
+  //   -webkit-tap-highlight-color:transparent;
 
-    &:hover {
-      background: rgba(0, 0, 0, .025)
-    }
-  }
+  //   &:hover {
+  //     background: rgba(0, 0, 0, .025)
+  //   }
+  // }
 
-  .breadcrumb-container {
-    float: left;
-  }
+  // .breadcrumb-container {
+  //   float: left;
+  // }
 
   .right-menu {
-    float: right;
+    flex: 0 0 100px;
     height: 100%;
     line-height: 50px;
 
