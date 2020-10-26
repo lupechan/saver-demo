@@ -48,15 +48,27 @@
   box-sizing: content-box;
 }
 
+$color:#155eaf;
 .el-table {
   background-color: transparent;
   color: white;
 
   th, tr {
     background-color: transparent;
-
+    color: #ffffffAA;
     &:hover > td {
       background-color: transparent !important;
+    }
+  }
+
+  &.el-table--border {
+    border-color: $color;
+    td, th {
+      border-color: $color !important;
+    }
+
+    &::before, &::after {
+      background-color: $color;
     }
   }
 }

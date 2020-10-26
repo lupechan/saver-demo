@@ -6,10 +6,11 @@
       </div>
     </slot>
     <slot name="header-append" />
-
-    <div class="dogear-body" :style="myStyle">
-      <slot />
-    </div>
+    <!-- <div class="dogear-body__wrap" style="padding:20px 0;width:100%"> -->
+      <div class="dogear-body" :style="myStyle">
+        <slot />
+      </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -84,6 +85,8 @@ export default {
 }
 
 .dogear-body {
+  margin: 15px 0;
   overflow-y: auto;
+
 }
 </style>

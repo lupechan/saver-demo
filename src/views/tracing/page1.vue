@@ -1,7 +1,7 @@
 <template>
   <div class="tracing-container">
     <div class="tracing-slider">
-      <dogear-box title="求救人">
+      <dogear-box title="求救人" style="flex: 0 0 348px" :no-scoll="true">
         <humen-info :info="helpSeekerData">
           <template v-slot:userinfo-append>
             <el-dropdown class="tracing__dropdown">
@@ -43,6 +43,7 @@
               active-color="#0085FF"
               :title="`搜救组： ${ rescueTeamData.name }`"
               :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
+              @click.native="handleStickClick"
             >
               <div>搜救能力：谈判、狙击、医务</div>
               <div>携带装备：搜救犬、无人机</div>
@@ -129,6 +130,11 @@ export default {
     },
     keyInfo() {
       return data.keyInfo
+    }
+  },
+  methods: {
+    handleStickClick() {
+      this.$router.push('/workorder')
     }
   }
 

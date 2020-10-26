@@ -22,6 +22,7 @@
                 :title="`${item.username}（${item.status}）`"
                 :sub-title="item.tel"
                 active-trigger="always"
+                @click.native="handleStickClick"
               >
                 <span>最新定位时间：2020.11.01 17:33:26</span>
               </stickies>
@@ -135,6 +136,11 @@ export default {
     },
     helpSeekData() {
       return data.helpSeek
+    }
+  },
+  methods: {
+    handleStickClick() {
+      this.$router.push('/tracing/page1')
     }
   }
 

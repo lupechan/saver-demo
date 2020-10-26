@@ -51,7 +51,7 @@ export const constantRoutes = [
       path: 'overview',
       name: 'Overview',
       component: () => import('@/views/overview/index'),
-      meta: { title: '总体情况总览', icon: 'dashboard' }
+      meta: { title: '总体情况总览', icon: 'dashboard', activeMenu: 'overview' }
     }]
   },
 
@@ -66,13 +66,13 @@ export const constantRoutes = [
         path: 'page1',
         name: 'Tracing1',
         component: () => import('@/views/tracing/page1'),
-        meta: { title: '跟踪页面1', icon: 'table' }
+        meta: { title: '跟踪页面', icon: 'table', activeMenu: 'tracing' }
       },
       {
         path: 'page2',
         name: 'Tracing2',
         component: () => import('@/views/tracing/page2'),
-        meta: { title: '跟踪页面2', icon: 'tree' }
+        meta: { title: '跟踪页面-进行中', icon: 'tree', activeMenu: 'tracing' }
       }
     ]
   },
@@ -82,10 +82,10 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: '',
         name: 'WorkOrder',
         component: () => import('@/views/workorder/index'),
-        meta: { title: '指派工单', icon: 'link' }
+        meta: { title: '指派工单', icon: 'link', activeMenu: 'tracing' }
       }
     ]
   },
@@ -95,10 +95,10 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: '',
         name: 'Records',
         component: () => import('@/views/records/index'),
-        meta: { title: '报警日志', icon: 'form' }
+        meta: { title: '报警日志', icon: 'form', activeMenu: 'records' }
       }
     ]
   },
@@ -108,10 +108,10 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: '',
         name: 'History',
         component: () => import('@/views/history/index'),
-        meta: { title: '救援历史记录', icon: 'form' }
+        meta: { title: '救援历史记录', icon: 'form', activeMenu: 'history' }
       }
     ]
   },

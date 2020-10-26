@@ -84,7 +84,6 @@ div:focus {
 // 报警日志及救援记录
 .page-main{
   .head{
-    margin: 0px 0 0 48px;
     display: flex;
     align-items: center;
     .square{
@@ -97,12 +96,12 @@ div:focus {
     background: rgba(29, 52, 124, 0.7) !important;
   }
   .head-select{
-    margin: 32px 0 0 48px;
+    margin-top: 32px;
     display: flex;
     align-items: center;
   }
   .head-search{
-    margin: 32px 0 0 48px;
+    margin-top: 32px;
     display: flex;
     align-items: center;
     .search-button{
@@ -111,13 +110,13 @@ div:focus {
     }
   }
   .head-table{
-    margin:30px 48px 0 48px;
+    margin-top:30px;
   }
   .el-input__inner{
     background-color: rgba(7, 18, 52, 0.7);
     color: #ffffff;
     border: 1px solid #155EAF;
-   }
+  }
 }
 .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li{
   background-color: rgba(7, 18, 52, 0.7);
@@ -184,42 +183,42 @@ div:focus {
   border-color: #155eaf;
 }
 .page-main,.workorder-page {
-  .el-table {
-    color: #fff;
-  }
+  // .el-table {
+  //   color: #fff;
+  // }
   
-  .el-table td,
-  .el-table th {
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    background-color: transparent;
-  }
+  // .el-table td,
+  // .el-table th {
+  //   font-weight: 400;
+  //   color: #fff;
+  //   text-align: center;
+  //   background-color: transparent;
+  // }
   
-  .el-table td,
-  .el-table th.is-leaf {
-    border: 1px solid #155eaf;
-  }
+  // .el-table td,
+  // .el-table th.is-leaf {
+  //   border: 1px solid #155eaf;
+  // }
   
-  .el-table--border td,
-  .el-table--border th,
-  .el-table__body-wrapper
-    .el-table--border.is-scrolling-left
-    ~ .el-table__fixed {
-    border-right: 1px solid #155eaf;
-  }
-  .el-table--border,
-  .el-table--group {
-    border: 1px solid #155eaf;
-  }
+  // .el-table--border td,
+  // .el-table--border th,
+  // .el-table__body-wrapper
+  //   .el-table--border.is-scrolling-left
+  //   ~ .el-table__fixed {
+  //   border-right: 1px solid #155eaf;
+  // }
+  // .el-table--border,
+  // .el-table--group {
+  //   border: 1px solid #155eaf;
+  // }
   
-  .el-table--border::after,
-  .el-table--group::after,
-  .el-table::before {
-    background-color: #155eaf;
-    width: 0;
-  }
-  .el-table--enable-row-hover .el-table__body tr:hover > td {
-    background-color: #000;
-  }
+  // .el-table--border::after,
+  // .el-table--group::after,
+  // .el-table::before {
+  //   background-color: #155eaf;
+  //   width: 0;
+  // }
+  // .el-table--enable-row-hover .el-table__body tr:hover > td {
+  //   background-color: #000;
+  // }
 }

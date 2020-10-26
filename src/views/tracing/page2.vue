@@ -1,7 +1,7 @@
 <template>
   <div class="tracing-container">
     <div class="tracing-slider">
-      <dogear-box title="求救人">
+      <dogear-box title="求救人" style="flex: 0 0 348px" :no-scoll="true">
         <humen-info :info="helpSeekerData">
           <template v-slot:userinfo-append>
             <el-dropdown class="tracing__dropdown">

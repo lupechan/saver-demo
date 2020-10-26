@@ -3,7 +3,7 @@
     <!-- <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
-    <div style="padding: 0 30px"> <img src="@/assets/map_images/logo.png" alt="" style="flex: none"> </div>
+    <div style="padding: 0 30px;margin-right:100px;"> <img src="@/assets/map_images/logo.png" alt="" style="flex: none"> </div>
     <el-menu
       :default-active="activeIndex"
       background-color="#12123A"
@@ -11,10 +11,13 @@
       active-text-color="#FFF"
       mode="horizontal"
       style="width:0;flex:auto;"
+      @select="handleSelect"
     >
       <!-- <img src="@/assets/map_images/logo.png" alt=""> -->
-      <el-menu-item index="1">海外救援情况总览</el-menu-item>
-      <el-menu-item index="2">报警救援全程跟踪</el-menu-item>
+      <el-menu-item index="overview">海外救援情况总览</el-menu-item>
+      <el-menu-item index="tracing">报警救援全程跟踪</el-menu-item>
+      <el-menu-item index="records">报警日志</el-menu-item>
+      <el-menu-item index="history">救援历史记录</el-menu-item>
     </el-menu>
 
     <div class="right-menu">
@@ -47,16 +50,16 @@
 <script>
 import { mapGetters } from 'vuex'
 // import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+// import Hamburger from '@/components/Hamburger'
 
 export default {
   components: {
     // Breadcrumb,
-    Hamburger
+    // Hamburger
   },
   data() {
     return {
-      activeIndex: '1'
+      activeIndex: 'overview'
     }
   },
   computed: {
@@ -65,6 +68,11 @@ export default {
       'avatar'
     ])
   },
+  watch: {
+    $route(val) {
+      this.activeIndex = val.meta.activeMenu
+    }
+  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
@@ -72,6 +80,16 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    handleSelect(val) {
+      let to = ''
+      switch (val) {
+        case 'overview': to = '/overview'; break
+        case 'tracing': to = '/tracing/page1'; break
+        case 'records': to = '/records'; break
+        case 'history': to = '/history'; break
+      }
+      this.$router.push(to)
     }
   }
 }

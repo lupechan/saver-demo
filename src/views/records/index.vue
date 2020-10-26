@@ -2,12 +2,12 @@
   <div class="page-main">
     <div class="head">
       <i class="square" />
-      <span style="padding-left:8px">报警日志</span>
+      <span style="padding-left:8px;font-size: 14px;">报警日志</span>
     </div>
     <div class="head-select">
-      <div>
-        <el-input value="国家" style="width:76px;height:36px" readonly />
-        <el-select v-model="selectData1" style="width:94px;height;36px" clearable placeholder="请选择">
+      <div class="head-select-item">
+        <div>国家</div>
+        <el-select slot="append" v-model="selectData1" style="width:100px;" clearable placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -16,9 +16,10 @@
           />
         </el-select>
       </div>
-      <div style="margin-left:32px">
-        <el-input value="城市" style="width:76px;height:36px" readonly />
-        <el-select v-model="selectData2" style="width:94px;height;36px" clearable placeholder="请选择">
+
+      <div class="head-select-item">
+        <div>城市</div>
+        <el-select slot="append" v-model="selectData2" style="width:100px;" clearable placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -27,9 +28,10 @@
           />
         </el-select>
       </div>
-      <div style="margin-left:32px">
-        <el-input value="日期" style="width:76px;height:36px" readonly />
-        <el-select v-model="selectData3" style="width:94px;height;36px" clearable placeholder="请选择">
+
+      <div class="head-select-item">
+        <div>日期</div>
+        <el-select slot="append" v-model="selectData3" style="width:100px;" clearable placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -38,9 +40,10 @@
           />
         </el-select>
       </div>
-      <div style="margin-left:32px">
-        <el-input value="报警方式" style="width:104px;height:`36px`" readonly />
-        <el-select v-model="selectData5" style="width:94px;height;36px" clearable placeholder="请选择">
+
+      <div class="head-select-item">
+        <div>报警方式</div>
+        <el-select slot="append" v-model="selectData5" style="width:100px;" clearable placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -49,9 +52,10 @@
           />
         </el-select>
       </div>
-      <div style="margin-left:32px">
-        <el-input value="处理结果" style="width:104px;height:36px" readonly />
-        <el-select v-model="selectData6" style="width:94px;height;36px" clearable placeholder="请选择">
+
+      <div class="head-select-item">
+        <div>处理结果</div>
+        <el-select slot="append" v-model="selectData6" style="width:100px;" clearable placeholder="请选择">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -62,67 +66,80 @@
       </div>
     </div>
     <div class="head-search">
-      <el-input v-model="inputData" style="width:60%;margin-right:22px" placeholder="请输入姓名或手机号或用户账号" />
-      <el-button class="search-button" type="primary">搜索</el-button>
+      <el-input v-model="inputData" size="small" style="width:60%;margin-right:22px" placeholder="请输入姓名或手机号或用户账号" />
+      <el-button size="small" class="search-button" type="primary">搜索</el-button>
     </div>
     <div class="head-table">
       <el-table
         :data="tableData"
+        border
+        size="small"
       >
-        <el-table-column prop="alarmNumber" label="报警编号" width="108" />
+        <el-table-column prop="alarmNumber" label="报警编号" width="108" align="center" />
         <el-table-column
           prop="grade"
           label="报警等级"
           width="82"
+          align="center"
         />
         <el-table-column
           prop="alarmType"
           label="报警类型"
           width="100"
+          align="center"
         />
         <el-table-column
           prop="country"
           label="国家"
           width="104"
+          align="center"
         />
         <el-table-column
           prop="city"
           label="城市"
           width="104"
+          align="center"
         />
         <el-table-column
           prop="date"
           label="日期"
           width="148"
+          align="center"
         />
         <el-table-column
           prop="time"
           label="时间"
           width="96"
+          align="center"
         />
         <el-table-column
           prop="helper"
           label="求救人"
           width="112"
+          align="center"
         />
         <el-table-column
           prop="phoneNumber"
           label="求救人手机号"
           width="150"
+          align="center"
         />
         <el-table-column
           prop="rescueMan"
           label="救援人员"
           width="112"
+          align="center"
         />
         <el-table-column
           prop="rescueResult"
           label="救援结果"
           width="114"
+          align="center"
         />
         <el-table-column
           prop="opration"
           label="操作"
+          align="center"
         >
           <template slot-scope="scope">
             <el-button type="text" size="medium" @click="handleClick(scope.row)">查看详情</el-button>
@@ -140,7 +157,7 @@
 </template>
 <script>
 export default {
-  name: 'History',
+  name: 'Records',
   data() {
     return {
       inputData: '',
@@ -278,3 +295,39 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.head-search input{
+  height: 36px !important;
+}
+.head-select {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.head-select-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #155eaf;
+  border-radius: 4px;
+  & > div:first-child{
+    font-size: 14px;
+    line-height: 14px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-right: 1px solid #155eaf;
+    border-radius: 4px 0 0 4px;
+    background-color: rgba(7, 18, 52, 0.7);
+  }
+
+  & + & {
+    margin-left: 30px;
+  }
+
+  .el-input > input {
+    border: 0;
+    height: 36px;
+  }
+}
+</style>

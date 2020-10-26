@@ -57,9 +57,9 @@ export default {
 
 <style lang="scss">
 .humeninfo-block {
-  padding: 20px;
+  padding: 0 20px;
   & + &{
-    padding-top: 0;
+    padding-top: 20px;
     .humeninfo-user {
       padding-top: 20px;
       border-top: 1px solid #154689;

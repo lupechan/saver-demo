@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss">
 .msglist-block {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .msglist-item {

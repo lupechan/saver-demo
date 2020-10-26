@@ -7,16 +7,16 @@
       </div>
       <div class="header-content">
         <el-table :data="tableData" border style="width: 100%">
-          <el-table-column label="搜救组" width="400">
+          <el-table-column label="搜救组" width="400" align="center">
             <template v-slot="{row}">
-              <el-select v-model="row.rescueGroup" style="width:300px" placeholder="某某搜救组">
+              <el-select v-model="row.rescueGroup" style="width:300px" placeholder="某某搜救组" size="small">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </template>
           </el-table-column>
-          <el-table-column prop="captain" label="队长" width="240" style="text-align:center" />
-          <el-table-column prop="people" label="人数" width="240" />
-          <el-table-column prop="distance" label="与救助人员距离" />
+          <el-table-column prop="captain" label="队长" width="240" align="center" style="text-align:center" />
+          <el-table-column prop="people" label="人数" width="240" align="center" />
+          <el-table-column prop="distance" label="与救助人员距离" align="center" />
         </el-table>
       </div>
     </div>
@@ -26,7 +26,9 @@
           <div class="card-item-logo">
             <img :src="item.imgUrl" alt="" class="avatar-img">
           </div>
-          <p class="captain-name">{{ item.captainName }} <span v-if="item.position">({{ item.position }})</span></p>
+          <p class="captain-name">
+            <strong>{{ item.captainName }} <span v-if="item.position">({{ item.position }})</span></strong>
+          </p>
           <p class="telephone"><span>手机号码：</span> {{ item.telephone }}</p>
           <p class="lasted-time"><span>最新定位时间：</span> {{ item.lastedTime }}</p>
           <p class="skill"><span>技能：</span> {{ item.skill }}</p>
@@ -34,7 +36,7 @@
       </div>
     </div>
     <div class="workorder-footer">
-      <el-button class="workorder-btn">确认</el-button>
+      <el-button class="workorder-btn" mini="sm" @click="handleConfirm">确认</el-button>
     </div>
   </div>
 </template>
@@ -131,7 +133,7 @@ export default {
     // 自适应盒子大小
     elect() {
       this.num = Math.round($('.content-card').width() / 428)
-      var wid = 'calc(' + 100 / this.num + '%' + ' - ' + (this.num - 1) / this.num * 12 + 'px' + ')'
+      var wid = 'calc(' + 100 / this.num + '%' + ' - ' + (this.num - 1) / this.num * 30 + 'px' + ')'
       var ii = 0
       var inter = setInterval(() => {
         $('.card-item').css({
@@ -143,35 +145,49 @@ export default {
           inter = null
         }
       }, 1)
+    },
+    handleConfirm() {
+      this.$router.push('/tracing/page2')
     }
   }
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .workorder-header {
-  margin: 28px 48px 11px 48px;
+  margin-bottom: 40px;
   .header-title {
     margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 14px;
     .border-line {
       margin-right: 8px;
-      border-left: 3px solid #2b7df8;
+      border-left: 4px solid #2b7df8;
     }
   }
   .header-content {
     box-shadow: 2px 2px 20px 0px rgba(52, 3, 191, 0.8) inset;
+    .el-table {
+      th, td {
+        color: white !important;
+        font-weight: normal;
+      }
+    }
   }
 }
 .workorder-content {
-  margin: 0 48px;
   .content-card {
     display: flex;
     flex-flow: row wrap;
+    p {
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
     .card-item {
       box-shadow: 2px 2px 20px 0px rgba(52, 3, 191, 0.8) inset;
       position: relative;
       height: 202px;
-      margin-top: 21px;
-      margin-right: 12px;
+      margin-bottom: 30px;
+      margin-right: 30px;
       border: 1px solid #155eaf;
       .avatar-img {
         position: absolute;
@@ -182,12 +198,12 @@ export default {
         border-radius: 4px;
       }
       .captain-name {
-        margin: 45px 0 0 80px;
+        margin: 45px 0 33px 84px;
       }
       .telephone,
       .lasted-time,
       .skill {
-        margin-left: 80px;
+        margin-left: 84px;
       }
     }
   }
@@ -196,10 +212,9 @@ export default {
   }
 }
 .workorder-footer {
-  margin: 28px 48px;
   .workorder-btn {
     width: 108px;
-    height: 48px;
+    // height: 36px;
     border: 0;
     background-color: #2762fc;
     color: #fff;
