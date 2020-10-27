@@ -54,7 +54,6 @@ export default {
     width: 100%;
     height: 100%;
     border: 1px solid #155EAF;
-    z-index: 1;
   }
 
   &::after {
@@ -69,7 +68,6 @@ export default {
     border-width: 1px;
     border-style: none none solid none;
     transform: rotate(45deg) translateY(-35px);
-    z-index: 2;
   }
 }
 
