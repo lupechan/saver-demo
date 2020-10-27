@@ -32,9 +32,11 @@
       <div class="tracing__map">
         <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`">
           <div style="width:100%;">
-            <img src="@/assets/map_images/Group_90.png" style="position:absolute;top:40%;left:24%">
-            <img src="@/assets/map_images/Group_102.png" style="position:absolute;bottom:20px;right:20px">
-            <img src="@/assets/map_images/Group_146.png" style="position:absolute;top:calc(40% + 100px);left:calc(24% + 105px)">
+            <img src="@/assets/map_images/Group_101.png" style="position:absolute;bottom:20px;right:20px">
+            <div style="position:absolute;top:40%;left:24%">
+              <img src="@/assets/map_images/Group_90.png">
+              <img src="@/assets/map_images/Group_146.png" style="position:absolute;top:28%;left:44%">
+            </div>
             <div style="position:absolute;top:50%;left:10%">
               <img src="@/assets/map_images/Vector_51.png" style="position:absolute;top:0;left:0">
               <img src="@/assets/map_images/Vector_5.png" style="position:absolute;top:20px;left:20px">
@@ -51,8 +53,8 @@
           <template v-for="item in rescueTeamData.members">
             <stickies
               :key="item.userId"
-              :pos="[20, 20]"
-              active-color="#0085FF"
+              :active-color="Math.random() > 0.5 ? '#0085FF': '#65666F'"
+              active-trigger="always"
               :title="`搜救组： ${ rescueTeamData.name }`"
               :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
             >
@@ -149,8 +151,9 @@ export default {
 <style lang="scss">
 .tracing-container {
   display: flex;
-  height: calc(100vh - 110px);
+  // height: calc(100vh - 110px);
   width: 100%;
+  height: 750px;
   // over
   & > div {
     height: 100%;

@@ -91,61 +91,51 @@
         <el-table-column
           prop="grade"
           label="报警等级"
-          width="82"
           align="center"
         />
         <el-table-column
           prop="alarmType"
           label="报警类型"
-          width="100"
           align="center"
         />
         <el-table-column
           prop="country"
           label="国家"
-          width="104"
           align="center"
         />
         <el-table-column
           prop="city"
           label="城市"
-          width="104"
           align="center"
         />
         <el-table-column
           prop="date"
           label="日期"
-          width="148"
           align="center"
         />
         <el-table-column
           prop="time"
           label="时间"
-          width="96"
           align="center"
         />
         <el-table-column
           prop="helper"
           label="求救人"
-          width="112"
           align="center"
         />
         <el-table-column
           prop="phoneNumber"
           label="求救人手机号"
-          width="150"
           align="center"
         />
         <el-table-column
           prop="rescueMan"
           label="救援人员"
-          width="112"
           align="center"
         />
         <el-table-column
           prop="rescueResult"
           label="救援结果"
-          width="114"
           align="center"
         />
         <el-table-column

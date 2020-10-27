@@ -3,7 +3,9 @@
     <!-- <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
-    <div style="padding: 0 30px;margin-right:100px;"> <img src="@/assets/map_images/logo.png" alt="" style="flex: none"> </div>
+    <div style="margin:0 100px 0 30px;width=90px">
+      <img src="@/assets/map_images/logo.png" alt="" style="flex: none" width="100%">
+    </div>
     <el-menu
       :default-active="activeIndex"
       background-color="#12123A"
@@ -21,11 +23,15 @@
     </el-menu>
 
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
+      <!-- <el-dropdown class="avatar-container" trigger="click"> -->
+      <div class="avatar-container">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
+          <img src="@/assets/map_images/avatar.png" class="user-avatar">
           <!-- <i class="el-icon-caret-bottom" /> -->
+          <span>管理员</span>
         </div>
+      </div>
         <!-- <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item>
@@ -42,7 +48,7 @@
             <span style="display:block;">Log Out</span>
           </el-dropdown-item>
         </el-dropdown-menu> -->
-      </el-dropdown>
+      <!-- </el-dropdown> -->
     </div>
   </div>
 </template>
@@ -99,15 +105,23 @@ export default {
 .navbar {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 60px;
   overflow: hidden;
   position: relative;
   background: #12123A;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
-  .el-menu-item {
-    height: 50px;
+  .el-menu {
+    border-color: transparent;
+  }
 
+  .el-menu-item {
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    margin-right: 60px;
+    border-width: 3px;
+    font-weight: 500;
     &.is-active {
       border-color: #2762FC !important;
     }
@@ -133,7 +147,7 @@ export default {
   .right-menu {
     flex: 0 0 100px;
     height: 100%;
-    line-height: 50px;
+    line-height: 60px;
 
     &:focus {
       outline: none;
@@ -158,16 +172,26 @@ export default {
     }
 
     .avatar-container {
+      height: 100%;
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        width: 100px;
+        height: 100%;
+        // margin-top: 10px;
         position: relative;
+
+        & > span {
+          font-size: 14px;
+          margin-left: 8px;
+        }
 
         .user-avatar {
           cursor: pointer;
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           border-radius: 10px;
         }
 

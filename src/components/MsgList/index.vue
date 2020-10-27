@@ -21,7 +21,8 @@ export default {
 
 <style lang="scss">
 .msglist-block {
-  padding: 0 20px;
+  padding: 0 27px;
+  box-sizing: border-box;
 }
 
 .msglist-item {
@@ -35,6 +36,7 @@ export default {
   line-height: 1.2;
   color: white;
   position: relative;
+  white-space: pre;
 
   & + .msglist__subtitle {
     margin-top: 8px;
@@ -47,7 +49,8 @@ export default {
     position: absolute;
     top: 2px;
     left: -10px;
-    background-color: #0084FF;
+    background-color: #2762FC;
+    border-radius: 26px;
   }
 }
 

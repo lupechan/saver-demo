@@ -2,6 +2,14 @@
  * Created by PanJiaChen on 16/11/18.
  */
 
+// const viewPort = window.screen.width // 屏幕分辨率
+// const viewPort = window.document.body.offsetWidth
+
+export function fixPx($px) {
+  const viewPort = window.document.body.offsetWidth
+  return $px * (viewPort / 1440)
+}
+
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time

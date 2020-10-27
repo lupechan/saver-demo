@@ -15,10 +15,10 @@
         <dogear-box :no-scoll="true" class="overview__mapbg" :style="`background-image:url(${mapbg})`">
           <div class="overview__mapfront">
             <img :src="map" width="100%">
-            <template v-for="item in helpSeekerData">
+            <template v-for="(item, index) in helpSeekerData">
               <stickies
                 :key="item.userId"
-                :pos="[20, 20]"
+                :pos="poses[index]"
                 :title="`${item.username}（${item.status}）`"
                 :sub-title="item.tel"
                 active-trigger="always"
@@ -33,13 +33,13 @@
 
       <div class="overview__table">
         <dogear-box>
-          <el-table :data="tableData">
-            <el-table-column align="center" prop="status" label="状态" width="60" />
-            <el-table-column align="center" prop="username" label="姓名" />
-            <el-table-column align="center" prop="job" label="职务" />
-            <el-table-column align="center" prop="posTime" label="最新定位时间" width="150" />
-            <el-table-column align="center" prop="posCity" label="最新定位城市" width="120" />
-            <el-table-column align="center" prop="posPoint" label="最新定位坐标" width="130" />
+          <el-table :data="tableData" height="135px" style="overflow:hidden">
+            <el-table-column align="center" prop="status" label="状态" :width="fixPx(80)" />
+            <el-table-column align="center" prop="username" label="姓名" :width="fixPx(80)" />
+            <el-table-column align="center" prop="job" label="职务" :width="fixPx(90)" />
+            <el-table-column align="center" prop="posTime" label="最新定位时间" :width="fixPx(160)" />
+            <el-table-column align="center" prop="posCity" label="最新定位城市" :width="fixPx(130)" />
+            <el-table-column align="center" prop="posPoint" label="最新定位坐标" :width="fixPx(160)" />
           </el-table>
         </dogear-box>
       </div>
@@ -64,6 +64,8 @@ import MsgList from '@/components/MsgList'
 import Stickies from '@/components/Stickies'
 import TipsBox from './components/TipsBox'
 
+import { fixPx } from '@/utils'
+
 import mapbg from '@/assets/map_images/mapbg.png'
 import map from '@/assets/map_images/map01.png'
 
@@ -73,24 +75,19 @@ const data = Mock.mock({
   'focus|30': [{
     userId: '@id',
     username: '@cname',
-    account: /[a-zA-Z0-9]{8,13}/,
     'status|1': ['失联状态', '正在搜救', '谈判状态', '告警状态'],
     tel: /\+86 130\d{8}/,
-    callTime: '@datetime("yyyy.MM.dd HH:mm")',
     posTime: '@datetime("yyyy.MM.dd HH:mm")',
     pos: '孟买（23.2345.33.1234）',
     job: '外交官',
-    age: '@integer(30, 60)',
-    'abo|1': ['A', 'B', 'O', 'AB'],
-    history: '无',
-    allergen: '无'
+    age: '@integer(30, 60)'
   }],
   tips: [
     { name: '突发事件数', value: '@integer(2, 20)' },
     { name: '求救人员总数', value: '@integer(2, 20)' },
     { name: '重要求救人员总数', value: '@integer(2, 20)' }
   ],
-  'table|2': [{
+  'table|3': [{
     id: '@id',
     username: '@cname',
     job: '外交官',
@@ -100,7 +97,7 @@ const data = Mock.mock({
     posCity: '孟买',
     posPoint: '23.2345.33.1234'
   }],
-  'helpSeeker|20': [{
+  'helpSeeker|10': [{
     userId: '@id',
     username: '@cname',
     'status|1': ['正在搜救', '救助状态', '告警状态'],
@@ -115,11 +112,30 @@ const data = Mock.mock({
   }]
 })
 
+const poses = [
+  ['30%', '10%'],
+  ['70%', '30%'],
+  ['76%', '40%'],
+  ['10%', '20%'],
+  ['20%', '35%'],
+  ['28%', '65%'],
+  ['50%', '50%'],
+  ['80%', '65%'],
+  ['37%', '15%'],
+  ['60%', '40%']
+]
+
 export default {
   name: 'Overview',
   components: { DogearBox, HumenInfo, TipsBox, MsgList, Stickies },
   data() {
-    return { mapbg, map }
+    return {
+      mapbg,
+      map,
+      timer: [],
+      poses,
+      tableData: data.table
+    }
   },
   computed: {
     focusData() {
@@ -128,9 +144,6 @@ export default {
     tipsData() {
       return data.tips
     },
-    tableData() {
-      return data.table
-    },
     helpSeekerData() {
       return data.helpSeeker
     },
@@ -138,10 +151,54 @@ export default {
       return data.helpSeek
     }
   },
+  mounted() {
+    this.timer.push(setInterval(() => {
+      this.tableMove()
+    }, 1200))
+  },
+  beforeDestroy() {
+    this.timer.forEach(item => clearInterval(item))
+  },
   methods: {
+    getTableData() {
+      const row = Mock.mock({
+        id: '@id',
+        username: '@cname',
+        job: '外交官',
+        tel: /130\d{8}/,
+        status: '失联',
+        posTime: '@datetime("yyyy.MM.dd HH:mm:ss")',
+        posCity: '孟买',
+        posPoint: '23.2345.33.1234'
+      })
+
+      // this.tableData.pop()
+      // this.tableData.unshift(row)
+      // this.tableMove()
+      return row
+    },
+    tableMove() {
+      // 48px 为表格行高
+      const t = document.getElementsByClassName('el-table__body')
+      setTimeout(() => {
+        t[0].style.transition = 'transform .5s'
+        t[0].style.transform = 'translateY(0)'
+      }, 500)
+
+      setTimeout(() => {
+        // this.getTableData();
+        if (this.tableData.length > 3) {
+          this.tableData.pop()
+        }
+        this.tableData.unshift(this.getTableData())
+        t[0].style.transition = 'transform 0s ease 0s'
+        t[0].style.transform = 'translateY(-45px)'
+      }, 1000)
+    },
     handleStickClick() {
       this.$router.push('/tracing/page1')
-    }
+    },
+    fixPx
   }
 
 }
@@ -150,9 +207,9 @@ export default {
 <style lang="scss">
 .overview-container {
   display: flex;
-  height: calc(100vh - 110px);
+  height: 750px;
   width: 100%;
-  // over
+  overflow: auto;
   & > div {
     height: 100%;
     display: flex;
@@ -199,6 +256,14 @@ export default {
   }
   .el-table::before {
     height: 0
+  }
+
+  .el-table__body-wrapper {
+    overflow: hidden;
+    & > table {
+      transition: transform 0.5s;
+      transform: translateY(-45px);
+    }
   }
 }
 </style>

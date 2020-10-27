@@ -73,6 +73,7 @@ export default {
   line-height: 14px;
   opacity: 0.8;
   color: #FFFFFF;
+  white-space: nowrap;
 
   & + & {
     margin-top: 20px

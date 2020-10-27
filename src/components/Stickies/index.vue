@@ -6,7 +6,7 @@
     :style="{top, left}"
     placement="top-start"
     trigger="hover"
-    offset="10"
+    :offset="10"
     popper-class="stickies-tipbox"
     @show="handleShow"
     @hide="handleHide"
@@ -56,6 +56,10 @@ export default {
       type: String,
       default: '#FF2482'
     },
+    inactiveColor: {
+      type: String,
+      default: '#65666F'
+    },
     activeTrigger: {
       type: String,
       default: 'hover'
@@ -63,16 +67,15 @@ export default {
   },
   data() {
     return {
-      inactiveColor: '#65666F',
       isActive: false
     }
   },
   computed: {
     top() {
-      return ~~(10 + Math.random() * 70) + '%'
+      return this.pos[1] || ~~(10 + Math.random() * 70) + '%'
     },
     left() {
-      return ~~(10 + Math.random() * 70) + '%'
+      return this.pos[0] || ~~(10 + Math.random() * 70) + '%'
     },
     avatar() {
       return defaultAvatar

@@ -6,11 +6,10 @@
       </div>
     </slot>
     <slot name="header-append" />
-    <!-- <div class="dogear-body__wrap" style="padding:20px 0;width:100%"> -->
-      <div class="dogear-body" :style="myStyle">
-        <slot />
-      </div>
-    <!-- </div> -->
+    <div class="dogear-body" :style="myStyle">
+      <slot />
+    </div>
+    <div class="dotban-bottom" />
   </div>
 </template>
 
@@ -22,7 +21,8 @@ export default {
       type: String,
       default: ''
     },
-    noScoll: Boolean
+    noScoll: Boolean,
+    noDogear: Boolean
   },
   computed: {
     myStyle() {
@@ -54,6 +54,7 @@ export default {
     width: 100%;
     height: 100%;
     border: 1px solid #155EAF;
+    // padding: 1px;
   }
 
   &::after {
@@ -81,12 +82,12 @@ export default {
 }
 
 .dogear-title {
+  font-weight: 500;
   font-size: 14px;
 }
 
 .dogear-body {
   margin: 15px 0;
   overflow-y: auto;
-
 }
 </style>

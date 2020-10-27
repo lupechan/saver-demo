@@ -17,7 +17,7 @@ border-radius: 2px;
 /*定义滑块颜色、内阴影及圆角*/
 ::-webkit-scrollbar-thumb{
 border-radius: 2px;
-background-color: #2762FC;
+background-color: $primaryColor;
 }
 
 body {
@@ -81,6 +81,59 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+
+$dotWidth: 6pt;
+$dotHeight: 8pt;
+$dotBorderWidth: 1.5pt;
+$dotColor: #5A82EA;
+
+$pix: -1pt;
+
+@mixin dot {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: $dotWidth;
+  height: $dotHeight;
+  border-width: $dotBorderWidth;
+  border-color: $dotColor;
+}
+
+.dotban-bottom {
+  &::before {
+    @include dot;
+    bottom: $pix;
+    left: $pix;
+    border-style: none none solid solid;
+  }
+
+  &::after {
+    @include dot;
+    bottom: $pix;
+    right: $pix;
+    border-style: none solid solid none;
+  }
+}
+
+.dotban-top {
+  &::before {
+    @include dot;
+    top: $pix;
+    left: $pix;
+    border-style: solid none none solid;
+  }
+
+  &::after {
+    @include dot;
+    top: $pix;
+    right: $pix;
+    border-style: solid solid none none;
+  }
+}
+
+
+
+
 // 报警日志及救援记录
 .page-main{
   .head{
@@ -181,44 +234,4 @@ div:focus {
 }
 .el-select:hover .el-input__inner {
   border-color: #155eaf;
-}
-.page-main,.workorder-page {
-  // .el-table {
-  //   color: #fff;
-  // }
-  
-  // .el-table td,
-  // .el-table th {
-  //   font-weight: 400;
-  //   color: #fff;
-  //   text-align: center;
-  //   background-color: transparent;
-  // }
-  
-  // .el-table td,
-  // .el-table th.is-leaf {
-  //   border: 1px solid #155eaf;
-  // }
-  
-  // .el-table--border td,
-  // .el-table--border th,
-  // .el-table__body-wrapper
-  //   .el-table--border.is-scrolling-left
-  //   ~ .el-table__fixed {
-  //   border-right: 1px solid #155eaf;
-  // }
-  // .el-table--border,
-  // .el-table--group {
-  //   border: 1px solid #155eaf;
-  // }
-  
-  // .el-table--border::after,
-  // .el-table--group::after,
-  // .el-table::before {
-  //   background-color: #155eaf;
-  //   width: 0;
-  // }
-  // .el-table--enable-row-hover .el-table__body tr:hover > td {
-  //   background-color: #000;
-  // }
 }
