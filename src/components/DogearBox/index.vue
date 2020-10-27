@@ -41,7 +41,7 @@ export default {
   background: rgba(7, 18, 52, 0.7);
   mix-blend-mode: normal;
   // opacity: 0.7;
-  border: 1px solid transparent;
+  // border: 1px solid transparent;
   box-sizing: border-box;
   box-shadow: inset 2px 2px 20px rgba(52, 3, 191, 0.8);
   position: relative;
@@ -54,6 +54,7 @@ export default {
     width: 100%;
     height: 100%;
     border: 1px solid #155EAF;
+    z-index: 1;
   }
 
   &::after {
@@ -68,6 +69,7 @@ export default {
     border-width: 1px;
     border-style: none none solid none;
     transform: rotate(45deg) translateY(-35px);
+    z-index: 2;
   }
 }
 
