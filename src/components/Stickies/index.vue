@@ -102,19 +102,20 @@ export default {
 
 .stickies__pos {
   position: relative;
-  width: 18px;
-  height: 18px;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
-  border: 2px solid #65666F;
+  border: 3px solid #65666F;
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
+  z-index: 10;
 
   &::after {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 2px;
+    bottom: -12px;
+    left: 6px;
     width: 0px;
     height: 0px;
     border-color: transparent;

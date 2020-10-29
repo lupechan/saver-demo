@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/styles/variables.scss';
+
 .dogear-block {
   height: 100%;
   display: flex;
@@ -53,7 +55,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #155EAF;
+    border: 1px solid $primaryBorderColor;
     // padding: 1px;
   }
 
@@ -65,7 +67,7 @@ export default {
     width: 50px;
     height: 50px;
     background-color: #0f0a23;
-    border-color: #155EAF;
+    border-color: $primaryBorderColor;
     border-width: 1px;
     border-style: none none solid none;
     transform: rotate(45deg) translateY(-35px);

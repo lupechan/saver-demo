@@ -2,7 +2,7 @@
   <div class="tracing-container">
     <div class="tracing-slider">
       <dogear-box title="求救人" style="flex: 0 0 348px" :no-scoll="true">
-        <humen-info :info="helpSeekerData">
+        <humen-list :info="helpSeekerData">
           <template v-slot:userinfo-append>
             <el-dropdown class="tracing__dropdown">
               <el-button type="primary" size="mini">
@@ -13,7 +13,7 @@
               </el-dropdown-menu>
             </el-dropdown>
           </template>
-        </humen-info>
+        </humen-list>
       </dogear-box>
 
       <dogear-box title="搜救组">
@@ -24,7 +24,7 @@
             <div>队长： {{ rescueTeamData.captain }}</div>
           </div>
         </template>
-        <humen-info v-for="info in rescueTeamData.members" :key="info.userId" :info="info" />
+        <humen-list v-for="info in rescueTeamData.members" :key="info.userId" :info="info" />
       </dogear-box>
     </div>
 
@@ -80,7 +80,7 @@
 
 <script>
 import DogearBox from '@/components/DogearBox'
-import HumenInfo from '@/components/HumenInfo'
+import HumenList from '@/components/HumenList'
 import MsgList from '@/components/MsgList'
 import Stickies from '@/components/Stickies'
 
@@ -123,7 +123,7 @@ const data = Mock.mock({
 
 export default {
   name: 'Tracing2',
-  components: { DogearBox, HumenInfo, MsgList, Stickies },
+  components: { DogearBox, HumenList, MsgList, Stickies },
   data() {
     return {
       statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态'],

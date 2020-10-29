@@ -299,6 +299,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/styles/variables.scss';
+
 .head-search input {
   height: 36px !important;
 }
@@ -310,7 +312,7 @@ export default {
 .head-select-item {
   display: flex;
   align-items: center;
-  border: 1px solid #155eaf;
+  border: 1px solid $primaryBorderColor;
   border-radius: 4px;
   & > div:first-child{
     font-size: 14px;
@@ -318,7 +320,7 @@ export default {
     height: 36px;
     line-height: 36px;
     padding: 0 16px;
-    border-right: 1px solid #155eaf;
+    border-right: 1px solid $primaryBorderColor;
     border-radius: 4px 0 0 4px;
     background-color: rgba(7, 18, 52, 0.7);
   }

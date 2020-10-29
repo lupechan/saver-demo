@@ -1,15 +1,15 @@
 <template>
-  <div class="humeninfo-block">
-    <div class="humeninfo-user humeninfo-item">
-      <div class="humeninfo-user__avatar" :style="`background-image:url(${avatar})`" />
-      <div class="humeninfo-user__title">
+  <div class="humenlist-block">
+    <div class="humenlist-user humenlist-item">
+      <div class="humenlist-user__avatar" :style="`background-image:url(${avatar})`" />
+      <div class="humenlist-user__title">
         <span>{{ info.username }}</span>
         <span v-show="'status' in info">（{{ info.status }}）</span>
       </div>
       <slot name="userinfo-append" />
     </div>
 
-    <div v-for="item in validInfo" :key="item" class="humeninfo-item">
+    <div v-for="item in validInfo" :key="item" class="humenlist-item">
       {{ item }}
     </div>
 
@@ -33,7 +33,7 @@ const infoWords = [
 import defaultAvatar from '@/assets/map_images/1.png'
 
 export default {
-  name: 'HumenInfo',
+  name: 'HumenList',
   props: {
     info: {
       type: Object,
@@ -56,18 +56,18 @@ export default {
 </script>
 
 <style lang="scss">
-.humeninfo-block {
+.humenlist-block {
   padding: 0 20px;
   & + &{
     padding-top: 20px;
-    .humeninfo-user {
+    .humenlist-user {
       padding-top: 20px;
       border-top: 1px solid #154689;
     }
   }
 }
 
-.humeninfo-item {
+.humenlist-item {
   position: relative;
   font-size: 14px;
   line-height: 14px;
@@ -80,7 +80,7 @@ export default {
   }
 }
 
-.humeninfo-user {
+.humenlist-user {
   display: flex;
   align-items: center;
   opacity: 1;

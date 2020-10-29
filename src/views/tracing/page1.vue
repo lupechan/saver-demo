@@ -2,7 +2,7 @@
   <div class="tracing-container">
     <div class="tracing-slider">
       <dogear-box title="求救人" style="flex: 0 0 348px" :no-scoll="true">
-        <humen-info :info="helpSeekerData">
+        <humen-list :info="helpSeekerData">
           <template v-slot:userinfo-append>
             <el-dropdown class="tracing__dropdown">
               <el-button type="primary" size="mini">
@@ -13,7 +13,7 @@
               </el-dropdown-menu>
             </el-dropdown>
           </template>
-        </humen-info>
+        </humen-list>
       </dogear-box>
 
       <dogear-box title="搜救组">
@@ -24,7 +24,7 @@
             <div>队长： {{ rescueTeamData.captain }}</div>
           </div>
         </template>
-        <humen-info v-for="info in rescueTeamData.members" :key="info.userId" :info="info" />
+        <humen-list v-for="info in rescueTeamData.members" :key="info.userId" :info="info" />
       </dogear-box>
     </div>
 
@@ -32,16 +32,21 @@
       <div class="tracing__map">
         <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`">
           <div style="width:100%;">
-            <img src="@/assets/map_images/Group_101.png" style="position:absolute;bottom:20px;right:20px">
-            <div style="position:absolute;top:40%;left:24%">
-              <img src="@/assets/map_images/Group_90.png">
-              <img src="@/assets/map_images/Group_146.png" style="position:absolute;top:28%;left:44%">
-            </div>
+            <img src="@/assets/map_images/Group_101.png" width="326" style="position:absolute;bottom:20px;right:20px">
+
+            <singal-stick style="top:45%;left:35%" />
+            <singal-stick style="top:51%;left:24%" />
+            <singal-stick style="top:57%;left:35%" />
+
+            <mark-stick style="top:53.5%;left:31.5%" title="1" />
+            <mark-stick style="top:70%;left:50%" title="2" />
+
+            <seeker-stick style="top:56%;left:40%" />
           </div>
           <template v-for="item in rescueTeamData.members">
             <stickies
               :key="item.userId"
-              :active-color="Math.random() > 0.5 ? '#0085FF': '#65666F'"
+              active-color="#0085FF"
               active-trigger="always"
               :title="`搜救组： ${ rescueTeamData.name }`"
               :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
@@ -64,14 +69,20 @@
         <msg-list :data="keyInfo" />
       </dogear-box>
     </div>
+
+    <humeninfo-dialog title="求救人信息" :visible.sync="showHumenInfo" />
   </div>
 </template>
 
 <script>
 import DogearBox from '@/components/DogearBox'
-import HumenInfo from '@/components/HumenInfo'
+import HumenList from '@/components/HumenList'
 import MsgList from '@/components/MsgList'
 import Stickies from '@/components/Stickies'
+import HumeninfoDialog from '@/components/HumenInfoDialog'
+import SeekerStick from './components/SeekerStick'
+import SingalStick from './components/SingalStick'
+import MarkStick from './components/MarkStick'
 
 import mapbg from '@/assets/map_images/map02.png'
 
@@ -113,9 +124,10 @@ const data = Mock.mock({
 
 export default {
   name: 'Tracing1',
-  components: { DogearBox, HumenInfo, MsgList, Stickies },
+  components: { DogearBox, HumenList, MsgList, Stickies, HumeninfoDialog, SeekerStick, SingalStick, MarkStick },
   data() {
     return {
+      showHumenInfo: false,
       statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态'],
       mapbg
     }

@@ -2,7 +2,7 @@
   <div class="overview-container">
     <div class="overview-slider">
       <dogear-box title="重点关注">
-        <humen-info v-for="info in focusData" :key="info.userId" :info="info" />
+        <humen-list v-for="info in focusData" :key="info.userId" :info="info" />
       </dogear-box>
     </div>
 
@@ -46,9 +46,9 @@
     </div>
 
     <div class="overview-slider">
-      <dogear-box title="求救人员" style="flex:3">
-        <humen-info v-for="info in helpSeekerData" :key="info.userId" :info="info" />
-      </dogear-box>
+      <!-- <dogear-box title="求救人员" style="flex:3">
+        <humen-list v-for="info in helpSeekerData" :key="info.userId" :info="info" />
+      </dogear-box> -->
 
       <dogear-box title="求救信息" style="flex:1">
         <msg-list :data="helpSeekData" />
@@ -59,7 +59,7 @@
 
 <script>
 import DogearBox from '@/components/DogearBox'
-import HumenInfo from '@/components/HumenInfo'
+import HumenList from '@/components/HumenList'
 import MsgList from '@/components/MsgList'
 import Stickies from '@/components/Stickies'
 import TipsBox from './components/TipsBox'
@@ -85,7 +85,7 @@ const data = Mock.mock({
   tips: [
     { name: '突发事件数', value: '@integer(2, 20)' },
     { name: '求救人员总数', value: '@integer(2, 20)' },
-    { name: '重要求救人员总数', value: '@integer(2, 20)' }
+    { name: '求救要客总数', value: '@integer(2, 20)' }
   ],
   'table|3': [{
     id: '@id',
@@ -127,7 +127,7 @@ const poses = [
 
 export default {
   name: 'Overview',
-  components: { DogearBox, HumenInfo, TipsBox, MsgList, Stickies },
+  components: { DogearBox, HumenList, TipsBox, MsgList, Stickies },
   data() {
     return {
       mapbg,
