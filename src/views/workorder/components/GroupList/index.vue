@@ -1,7 +1,7 @@
 <template>
   <div class="group-list">
     <el-radio-group v-model="checked" class="group-list__wrap">
-      <group-item v-for="item in data" :key="item.id" :data="item" />
+      <group-item v-for="(item, index) in data" :key="item.id" :data="item" :label="index" />
     </el-radio-group>
   </div>
 </template>
@@ -14,12 +14,20 @@ export default {
     data: {
       type: Array,
       default: () => []
+    },
+    checkedIndex: {
+      type: Number,
+      default: 0
     }
   },
-  data() {
-    const checked = this.data.length ? this.data[0].id : ''
-    return {
-      checked: checked
+  computed: {
+    checked: {
+      get() {
+        return this.checkedIndex
+      },
+      set(val) {
+        this.$emit('update:checkedIndex', val)
+      }
     }
   }
 }

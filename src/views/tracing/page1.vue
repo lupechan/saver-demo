@@ -49,7 +49,7 @@
               active-color="#0085FF"
               active-trigger="always"
               :title="`搜救组： ${ rescueTeamData.name }`"
-              :sub-title="`队长：${ rescueTeamData.captain }   人数：${ rescueTeamData.size }人`"
+              :sub-title="`${ item.role }：${ item.name }`"
               @click.native="handleStickClick"
             >
               <div>搜救能力：谈判、狙击、医务</div>
@@ -102,14 +102,29 @@ const data = Mock.mock({
   },
   'rescueTeam': {
     name: '长城三组',
-    captain: '张三',
     size: 6,
     'members|6': [{
-      username: '@cname',
-      tel: /\+86 130\d{8}/,
-      status: '队员',
-      posTime: '@datetime("yyyy.MM.dd HH:mm")'
-    }]
+      'id|+1': 0,
+      name: '@cname',
+      tel: /\130\d{8}/,
+      role: function(a, b) {
+        const no = (this.id + 1) % 6
+        if (no === 1) return '队长'
+        if (no === 2) return '副队长'
+        return '队员'
+      },
+      posTime: '@datetime("2020.MM.dd HH:mm")',
+      skills: function() {
+        return ['狙击', '谈判', '医务', '搜救'][~~(Math.random() * 4)]
+      }
+    }],
+    posTime: '@datetime("2020.MM.dd HH:mm")',
+    captain: function() {
+      return this.members[0].name
+    },
+    'radar|5': ['@integer(40, 90)'],
+    equips: '无人机、搜救犬、医疗包',
+    distance: '@integer(10, 80)km'
   },
   'records|20': [{
     'title': '@datetime("yyyy.MM.dd HH:mm")',
@@ -148,7 +163,7 @@ export default {
   },
   methods: {
     handleStickClick() {
-      this.$router.push('/workorder')
+      // this.$router.push('/workorder')
     }
   }
 
@@ -162,7 +177,7 @@ export default {
   // height: calc(100vh - 110px);
   width: 100%;
   height: 750px;
-  // over
+
   & > div {
     height: 100%;
     display: flex;

@@ -3,8 +3,9 @@
     <div class="humenlist-user humenlist-item">
       <div class="humenlist-user__avatar" :style="`background-image:url(${avatar})`" />
       <div class="humenlist-user__title">
-        <span>{{ info.username }}</span>
-        <span v-show="'status' in info">（{{ info.status }}）</span>
+        <a v-if="info.username" @click="handleShowInfo">{{ info.username }}</a>
+        <span v-else>{{ info.name }}</span>
+        <span v-show="descr !== null">（{{ descr }}）</span>
       </div>
       <slot name="userinfo-append" />
     </div>
@@ -13,6 +14,7 @@
       {{ item }}
     </div>
 
+    <humeninfo-dialog v-if="info.username" title="求救人信息" :visible.sync="showHumenInfo" :data="info" />
   </div>
 </template>
 
@@ -31,16 +33,26 @@ const infoWords = [
 ]
 
 import defaultAvatar from '@/assets/map_images/1.png'
+import HumeninfoDialog from '@/components/HumenInfoDialog'
 
 export default {
   name: 'HumenList',
+  components: { HumeninfoDialog },
   props: {
     info: {
       type: Object,
       default() { return {} }
     }
   },
+  data() {
+    return {
+      showHumenInfo: false
+    }
+  },
   computed: {
+    descr() {
+      return this.info.role || this.info.status || null
+    },
     avatar() {
       return defaultAvatar
     },
@@ -50,6 +62,11 @@ export default {
         if (word.key in this.info) info.push(`${word.name}：${this.info[word.key]}`)
       })
       return info
+    }
+  },
+  methods: {
+    handleShowInfo() {
+      this.showHumenInfo = true
     }
   }
 }
@@ -97,6 +114,9 @@ export default {
 
   &__title {
     font-weight: 500;
+    & > a:hover {
+      text-decoration: underline;
+    }
   }
 }
 

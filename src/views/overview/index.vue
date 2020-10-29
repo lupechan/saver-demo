@@ -196,7 +196,7 @@ export default {
       }, 1000)
     },
     handleStickClick() {
-      this.$router.push('/tracing/page1')
+      this.$router.push('/workorder')
     },
     fixPx
   }

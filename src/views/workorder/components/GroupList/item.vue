@@ -1,18 +1,18 @@
 <template>
   <div class="group-item">
-    <el-radio class="group-item" :label="data.id">
+    <el-radio class="group-item" :label="label">
       <div class="group-item__box">
         <div class="group-item__avatar">
           <img src="@/assets/map_images/1.png" alt="Avatar" width="100%">
         </div>
         <div class="group-item__info">
-          <div class="group-item__name">长城三组</div>
+          <div class="group-item__name">{{ data.name }}</div>
           <div class="group-item__descr">
-            <span>队长：张三</span>
-            <span>人数：5人</span>
+            <span>队长：{{ data.captain }}</span>
+            <span>人数：{{ data.size }}</span>
           </div>
-          <div>与救助人员距离：20km</div>
-          <div>最新定位时间：2020.11.01 12:36</div>
+          <div>与救助人员距离：{{ data.distance }}</div>
+          <div>最新定位时间：{{ data.posTime }}</div>
         </div>
 
         <div class="group-item__status">
@@ -32,6 +32,10 @@ export default {
       default() {
         return {}
       }
+    },
+    label: {
+      type: [String, Number],
+      default: ''
     }
   },
   data() {

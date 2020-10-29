@@ -57,6 +57,7 @@ export default {
     height: 100%;
     border: 1px solid $primaryBorderColor;
     // padding: 1px;
+    pointer-events: none;
   }
 
   &::after {

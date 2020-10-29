@@ -8,7 +8,7 @@
         <div class="humeninfo-list">
           <div class="humeninfo-list__title">个人信息</div>
           <div class="humeninfo-list__body">
-            <div><span>姓名：</span><span>李四</span></div>
+            <div><span>姓名：</span><span>{{ data.username }}</span></div>
             <div><span>性别：</span><span>男</span></div>
             <div><span>手机号：</span><span>+86 158 8888 8888</span></div>
             <div><span>出生日期：</span><span>1976.01.01</span></div>
