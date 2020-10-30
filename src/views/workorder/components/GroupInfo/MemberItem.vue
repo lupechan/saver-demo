@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div style="margin-top:16px;opacity:.6;font-size:12px">
+    <div style="margin-top:16px;opacity:.6;">
       <div style="white-space:nowrap">最新定位时间：{{ data.posTime }}</div>
       <div style="margin-top: 12px;white-space:nowrap">技能：{{ data.skills }}</div>
     </div>
@@ -38,6 +38,8 @@ export default {
   border-radius: 4px;
   padding: 23px;
   margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 14px;
 
   &__avatar {
     height: 40px;

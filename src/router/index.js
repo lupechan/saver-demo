@@ -46,7 +46,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/overview',
+    redirect: '/entry-exit',
     children: [{
       path: 'overview',
       name: 'Overview',
@@ -112,6 +112,19 @@ export const constantRoutes = [
         name: 'History',
         component: () => import('@/views/history/index'),
         meta: { title: '救援历史记录', icon: 'form', activeMenu: 'history' }
+      }
+    ]
+  },
+
+  {
+    path: '/entry-exit',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'Entry & Exit Infomation',
+        component: () => import('@/views/entry-exit/index'),
+        meta: { title: '出入境信息', icon: 'form', activeMenu: 'entry-exit' }
       }
     ]
   },

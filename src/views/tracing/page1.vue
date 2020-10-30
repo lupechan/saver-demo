@@ -39,9 +39,17 @@
             <singal-stick style="top:57%;left:35%" />
 
             <mark-stick style="top:53.5%;left:31.5%" title="1" />
-            <mark-stick style="top:70%;left:50%" title="2" />
+            <mark-stick style="top:70%;left:50%" title="2" :show-boundary="showNextStep" />
 
             <seeker-stick style="top:56%;left:40%" />
+
+            <template v-if="showNextStep">
+              <singal-stick style="top:72%;left:53%" />
+              <singal-stick style="top:78%;left:64%" />
+              <singal-stick style="top:66%;left:63%" />
+
+              <mark-stick style="top:75%;left:60%" title="3" />
+            </template>
           </div>
           <template v-for="item in rescueTeamData.members">
             <stickies
@@ -69,8 +77,6 @@
         <msg-list :data="keyInfo" />
       </dogear-box>
     </div>
-
-    <humeninfo-dialog title="求救人信息" :visible.sync="showHumenInfo" />
   </div>
 </template>
 
@@ -79,7 +85,6 @@ import DogearBox from '@/components/DogearBox'
 import HumenList from '@/components/HumenList'
 import MsgList from '@/components/MsgList'
 import Stickies from '@/components/Stickies'
-import HumeninfoDialog from '@/components/HumenInfoDialog'
 import SeekerStick from './components/SeekerStick'
 import SingalStick from './components/SingalStick'
 import MarkStick from './components/MarkStick'
@@ -139,10 +144,10 @@ const data = Mock.mock({
 
 export default {
   name: 'Tracing1',
-  components: { DogearBox, HumenList, MsgList, Stickies, HumeninfoDialog, SeekerStick, SingalStick, MarkStick },
+  components: { DogearBox, HumenList, MsgList, Stickies, SeekerStick, SingalStick, MarkStick },
   data() {
     return {
-      showHumenInfo: false,
+      showNextStep: false,
       statusOptions: ['失联状态', '正在搜救', '谈判状态', '告警状态'],
       mapbg
     }
@@ -161,8 +166,14 @@ export default {
       return data.keyInfo
     }
   },
+  mounted() {
+    setTimeout(() => {
+      this.showNextStep = true
+    }, 10000)
+  },
   methods: {
     handleStickClick() {
+      this.showNextStep = true
       // this.$router.push('/workorder')
     }
   }

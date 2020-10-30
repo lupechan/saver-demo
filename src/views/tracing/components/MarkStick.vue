@@ -4,6 +4,8 @@
       <span class="stick-title">{{ title }}</span>
       <!-- <img src="@/assets/map_images/stick2.png" width="20"> -->
     </div>
+    <div v-if="showBoundary" class="stick-bound" />
+    <div v-if="showBoundary" class="stick-wave" />
   </div>
 </template>
 
@@ -16,7 +18,8 @@ export default {
     title: {
       type: String,
       default: ''
-    }
+    },
+    showBoundary: Boolean
   },
   data() {
     return {
@@ -46,6 +49,24 @@ export default {
   .stick-title {
     font-size: 12px;
     line-height: 12px;
+  }
+
+  .stick-bound, .stick-wave {
+    width: 268px;
+    height: 268px;
+    border-radius: 50%;
+    position: absolute;
+    left: -127px;
+    top: -144px;
+    // transform: translate(-50%, -50%);
+    background: #193AEC;;
+    opacity: 0.2;
+    z-index: 1;
+  }
+
+  .stick-wave {
+    transform: scale(0);
+    animation: wave 2s ease-in-out 1s infinite;
   }
 }
 

@@ -55,6 +55,8 @@ export default {
 <style lang="scss">
 .list-item {
   position: relative;
+  font-size: 14px;
+  line-height: 14px;
   text-indent: 1em;
   &::after {
     content: '';
@@ -74,8 +76,6 @@ export default {
   margin-bottom: 36px;
   &__title {
     font-weight: 500;
-    font-size: 14px;
-    line-height: 14px;
     padding-bottom: 18px;
     border-bottom: 1px solid #ffffff77;
     margin-bottom: 20px;
@@ -85,6 +85,8 @@ export default {
     div {
       margin-top: 18px;
       display: flex;
+      font-size: 14px;
+      line-height: 14px;
 
       span:first-child {
         white-space: nowrap;

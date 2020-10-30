@@ -16,6 +16,7 @@
       @select="handleSelect"
     >
       <!-- <img src="@/assets/map_images/logo.png" alt=""> -->
+      <el-menu-item index="entry-exit">海外出境信息</el-menu-item>
       <el-menu-item index="overview">海外救援情况总览</el-menu-item>
       <el-menu-item index="tracing">报警救援全程跟踪</el-menu-item>
       <el-menu-item index="records">报警日志</el-menu-item>
@@ -65,7 +66,7 @@ export default {
   },
   data() {
     return {
-      activeIndex: 'overview'
+      activeIndex: this.$route.meta.activeMenu
     }
   },
   computed: {
@@ -90,6 +91,7 @@ export default {
     handleSelect(val) {
       let to = ''
       switch (val) {
+        case 'entry-exit': to = '/entry-exit'; break
         case 'overview': to = '/overview'; break
         case 'tracing': to = '/tracing/page1'; break
         case 'records': to = '/records'; break

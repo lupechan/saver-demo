@@ -107,7 +107,7 @@ export default {
     margin-right: 10px;
     border: 1px solid #FFFFFF77;
     border-radius: 50%;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     overflow: hidden;
   }
