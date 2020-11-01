@@ -1,15 +1,16 @@
 <template>
   <div class="entry-exit">
     <dogear-box class="entry-exit__search" title="搜索">
-      <search-box />
+      <search-box @search="handleSearch" />
     </dogear-box>
 
-    <dogear-box :no-scoll="true" class="entry-exit__map" :style="`background-image:url(${mapbg})`">
-      <img :src="tipsImg" width="355" style="position: absolute;bottom: 20px;right:20px;">
+    <entry-map class="entry-exit__map" />
 
-      <dogear-box v-show="showResultBox" title="搜索结果" class="entry-exit__result" :no-scoll="true">
-        <search-result-box />
-      </dogear-box>
+    <dogear-box v-show="showResultBox" title="搜索结果" class="entry-exit__result" :no-scoll="true">
+      <template v-slot:header-append>
+        <i class="el-dialog__close el-icon el-icon-close entry-exit__result-close" @click="handleCloseResult" />
+      </template>
+      <search-result-box />
     </dogear-box>
   </div>
 </template>
@@ -18,17 +19,21 @@
 import DogearBox from '@/components/DogearBox'
 import SearchBox from './components/SearchBox'
 import SearchResultBox from './components/SearchResultBox'
-
-import mapbg from '@/assets/map_images/airline.png'
-import tipsImg from '@/assets/map_images/Group_247.png'
+import EntryMap from './components/EntryMap'
 
 export default {
-  components: { DogearBox, SearchBox, SearchResultBox },
+  components: { DogearBox, SearchBox, SearchResultBox, EntryMap },
   data() {
     return {
-      showResultBox: true,
-      mapbg,
-      tipsImg
+      showResultBox: false
+    }
+  },
+  methods: {
+    handleSearch() {
+      this.showResultBox = true
+    },
+    handleCloseResult() {
+      this.showResultBox = false
     }
   }
 }
@@ -46,14 +51,9 @@ export default {
   }
 
   &__map {
-    position: relative;
-    flex: auto;
     margin-left: 30px;
     height: 100%;
     min-height: 775px;
-    background-repeat: no-repeat;
-    background-size: 90%;
-    background-position: 50% 50%;
   }
 
   &__result {
@@ -62,6 +62,14 @@ export default {
     top: 40px;
     width: 280px;
     height: 356px;
+  }
+
+  &__result-close {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    line-height: 40px;
+    cursor: pointer;
   }
 }
 </style>

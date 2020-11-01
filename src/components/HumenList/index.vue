@@ -2,10 +2,11 @@
   <div class="humenlist-block">
     <div class="humenlist-user humenlist-item">
       <div class="humenlist-user__avatar" :style="`background-image:url(${avatar})`" />
-      <div class="humenlist-user__title">
+      <div class="`humenlist-user__title`">
         <a v-if="info.username" @click="handleShowInfo">{{ info.username }}</a>
         <span v-else>{{ info.name }}</span>
-        <span v-show="descr !== null">（{{ descr }}）</span>
+        <span v-show="info.role != null">（{{ info.role }}）</span>
+        <div v-if="info.status != null" class="humenlist-user__status">状态：{{ info.status }} </div>
       </div>
       <slot name="userinfo-append" />
     </div>
@@ -21,7 +22,7 @@
 <script>
 const infoWords = [
   { key: 'tel', name: '手机号' },
-  { key: 'account', name: '用户账号' },
+  { key: 'creditId', name: '证件号' },
   { key: 'callTime', name: '求救时间' },
   { key: 'posTime', name: '最新定位时间' },
   { key: 'pos', name: '最新定位' },
@@ -50,11 +51,8 @@ export default {
     }
   },
   computed: {
-    descr() {
-      return this.info.role || this.info.status || null
-    },
     avatar() {
-      return defaultAvatar
+      return this.info.avatar || defaultAvatar
     },
     validInfo() {
       const info = []
@@ -117,6 +115,11 @@ export default {
     & > a:hover {
       text-decoration: underline;
     }
+  }
+
+  &__status {
+    font-size: 12px;
+    margin-top: 8px;
   }
 }
 

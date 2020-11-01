@@ -3,7 +3,7 @@
     <el-radio class="group-item" :label="label">
       <div class="group-item__box">
         <div class="group-item__avatar">
-          <img src="@/assets/map_images/1.png" alt="Avatar" width="100%">
+          <img :src="data.avatar" width="100%">
         </div>
         <div class="group-item__info">
           <div class="group-item__name">{{ data.name }}</div>

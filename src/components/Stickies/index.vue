@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import defaultAvatar from '@/assets/map_images/1.png'
 
 export default {
   name: 'Stickies',
@@ -43,6 +42,10 @@ export default {
       default() {
         return []
       }
+    },
+    avatar: {
+      type: String,
+      default: ''
     },
     title: {
       type: String,
@@ -76,9 +79,6 @@ export default {
     },
     left() {
       return this.pos[0] || ~~(10 + Math.random() * 70) + '%'
-    },
-    avatar() {
-      return defaultAvatar
     },
     posColor() {
       return (this.activeTrigger === 'always' || this.isActive) ? this.activeColor : this.inactiveColor

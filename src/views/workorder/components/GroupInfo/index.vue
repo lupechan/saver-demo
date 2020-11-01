@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$router.push('/tracing/page1')
+      this.$router.push('/tracing')
     }
   }
 }

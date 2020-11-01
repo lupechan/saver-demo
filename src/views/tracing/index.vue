@@ -20,8 +20,8 @@
         <template v-slot:header-append>
           <div class="tracing__team">
             <div>搜救组： {{ rescueTeamData.name }}</div>
-            <div>人数： {{ rescueTeamData.size }}人</div>
-            <div>队长： {{ rescueTeamData.captain }}</div>
+            <span style="margin-right: 50px;">人数： {{ rescueTeamData.size }}人</span>
+            <span>队长： {{ rescueTeamData.captain }}</span>
           </div>
         </template>
         <humen-list v-for="info in rescueTeamData.members" :key="info.userId" :info="info" />
@@ -54,6 +54,7 @@
           <template v-for="item in rescueTeamData.members">
             <stickies
               :key="item.userId"
+              :avatar="item.avatar"
               active-color="#0085FF"
               active-trigger="always"
               :title="`搜救组： ${ rescueTeamData.name }`"
@@ -74,6 +75,9 @@
       </dogear-box>
 
       <dogear-box title="当前状态重要信息" style="flex:1">
+        <template v-slot:header-append>
+          <el-button type="primary" class="tracing-slider__btn">新增</el-button>
+        </template>
         <msg-list :data="keyInfo" />
       </dogear-box>
     </div>
@@ -89,18 +93,20 @@ import SeekerStick from './components/SeekerStick'
 import SingalStick from './components/SingalStick'
 import MarkStick from './components/MarkStick'
 
+import avatars from '@/assets/map_images/avatars.js'
 import mapbg from '@/assets/map_images/map02.png'
 
 import Mock, { Random } from 'mockjs'
 
 const data = Mock.mock({
   'helpSeeker': {
+    'avatar|1': avatars,
     userId: '@id',
     username: '@cname',
-    account: /[a-zA-Z0-9]{8,13}/,
+    creditId: '@id',
     tel: /\+86 130\d{8}/,
-    callTime: '@datetime("yyyy.MM.dd HH:mm")',
-    posTime: '@datetime("yyyy.MM.dd HH:mm")',
+    callTime: '@datetime("2020.MM.dd HH:mm")',
+    posTime: '@datetime("2020.MM.dd HH:mm")',
     'abo|1': ['A', 'B', 'O', 'AB'],
     history: '无',
     allergen: '无'
@@ -110,6 +116,7 @@ const data = Mock.mock({
     size: 6,
     'members|6': [{
       'id|+1': 0,
+      'avatar|1': avatars,
       name: '@cname',
       tel: /\130\d{8}/,
       role: function(a, b) {
@@ -132,12 +139,12 @@ const data = Mock.mock({
     distance: '@integer(10, 80)km'
   },
   'records|20': [{
-    'title': '@datetime("yyyy.MM.dd HH:mm")',
+    'title': '@datetime("2020.MM.dd HH:mm")',
     'subTitle': '李四位置坐标：35.1234.23.1234'
   }],
   'keyInfo|4': [{
     'title': () => {
-      return `${Random.datetime('yyyy.MM.dd HH:mm')}    ${Random.pick(['正在谈判', '救助状态', '正在搜救'])}`
+      return `${Random.datetime('2020.MM.dd HH:mm')}    ${Random.pick(['正在谈判', '救助状态', '正在搜救'])}`
     }
   }]
 })
@@ -204,6 +211,14 @@ export default {
 
 .tracing-slider {
   flex:0 0 307px;
+
+  &__btn {
+    position: absolute;
+    right: 35px;
+    top: 5px;
+    padding: 5px 11px;
+    border-radius: 16px;
+  }
 }
 
 .tracing-main {

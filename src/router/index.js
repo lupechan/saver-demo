@@ -58,21 +58,13 @@ export const constantRoutes = [
   {
     path: '/tracing',
     component: Layout,
-    redirect: '/tracing/page1',
-    name: 'Tracing',
     meta: { title: '报警救援全程跟踪', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'page1',
-        name: 'Tracing1',
-        component: () => import('@/views/tracing/page1'),
+        path: '',
+        name: 'Tracing',
+        component: () => import('@/views/tracing/index'),
         meta: { title: '跟踪页面', icon: 'table', activeMenu: 'tracing' }
-      },
-      {
-        path: 'page2',
-        name: 'Tracing2',
-        component: () => import('@/views/tracing/page2'),
-        meta: { title: '跟踪页面-进行中', icon: 'tree', activeMenu: 'tracing' }
       }
     ]
   },

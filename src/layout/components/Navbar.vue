@@ -93,7 +93,7 @@ export default {
       switch (val) {
         case 'entry-exit': to = '/entry-exit'; break
         case 'overview': to = '/overview'; break
-        case 'tracing': to = '/tracing/page1'; break
+        case 'tracing': to = '/tracing'; break
         case 'records': to = '/records'; break
         case 'history': to = '/history'; break
       }

@@ -1,7 +1,7 @@
 <template>
   <div class="member-item">
     <div style="display: flex;">
-      <img class="member-item__avatar" src="@/assets/map_images/2.png" alt="" width="40">
+      <img class="member-item__avatar" :src="data.avatar" alt="" width="40">
       <div class="member-item__info">
         <div>{{ data.name }}（{{ data.role }}）</div>
         <div>手机号：{{ data.tel }}</div>

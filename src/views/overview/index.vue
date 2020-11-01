@@ -15,16 +15,19 @@
         <dogear-box :no-scoll="true" class="overview__mapbg" :style="`background-image:url(${mapbg})`">
           <div class="overview__mapfront">
             <img :src="map" width="100%">
+            <img src="@/assets/map_images/Group_262.png" width="118" style="position:absolute;bottom:20px;right:20px">
             <template v-for="(item, index) in helpSeekerData">
               <stickies
                 :key="item.userId"
                 :pos="poses[index]"
+                :avatar="item.avatar"
                 :title="`${item.username}（${item.status}）`"
                 :sub-title="item.tel"
+                :active-color="item.status === '失联状态' ? '#FF2482' : '#0085FF'"
                 active-trigger="always"
-                @click.native="handleStickClick"
+                @click.native="handleStickClick(item)"
               >
-                <span>最新定位时间：2020.11.01 17:33:26</span>
+                <span>最新定位时间：{{ item.posTime }}</span>
               </stickies>
             </template>
           </div>
@@ -68,16 +71,18 @@ import { fixPx } from '@/utils'
 
 import mapbg from '@/assets/map_images/mapbg.png'
 import map from '@/assets/map_images/map01.png'
+import avatars from '@/assets/map_images/avatars.js'
 
 import Mock, { Random } from 'mockjs'
 
 const data = Mock.mock({
   'focus|30': [{
+    'avatar|1': avatars,
     userId: '@id',
     username: '@cname',
     'status|1': ['失联状态', '正在搜救', '谈判状态', '告警状态'],
     tel: /\+86 130\d{8}/,
-    posTime: '@datetime("yyyy.MM.dd HH:mm")',
+    posTime: '@datetime("2020.MM.dd HH:mm")',
     pos: '孟买（23.2345.33.1234）',
     job: '外交官',
     age: '@integer(30, 60)'
@@ -88,26 +93,28 @@ const data = Mock.mock({
     { name: '求救要客总数', value: '@integer(2, 20)' }
   ],
   'table|3': [{
+    'avatar|1': avatars,
     id: '@id',
     username: '@cname',
     job: '外交官',
     tel: /130\d{8}/,
     status: '失联',
-    posTime: '@datetime("yyyy.MM.dd HH:mm:ss")',
+    posTime: '@datetime("2020.MM.dd HH:mm:ss")',
     posCity: '孟买',
     posPoint: '23.2345.33.1234'
   }],
   'helpSeeker|10': [{
+    'avatar|1': avatars,
     userId: '@id',
     username: '@cname',
-    'status|1': ['正在搜救', '救助状态', '告警状态'],
+    'status|1': ['失联状态', '失联状态', '正在搜救', '救助状态', '告警状态'],
     tel: /\+86 130\d{8}/,
-    posTime: '@datetime("yyyy.MM.dd HH:mm")',
+    posTime: '@datetime("2020.MM.dd HH:mm")',
     pos: '孟买（23.2345.33.1234）'
   }],
   'helpSeek|20': [{
     'title': () => {
-      return `${Random.cname()} 于${Random.datetime('yyyy.MM.dd HH:mm')}在印度孟买求救`
+      return `${Random.cname()} 于${Random.datetime('2020.MM.dd HH:mm')}在印度孟买求救`
     }
   }]
 })
@@ -167,7 +174,7 @@ export default {
         job: '外交官',
         tel: /130\d{8}/,
         status: '失联',
-        posTime: '@datetime("yyyy.MM.dd HH:mm:ss")',
+        posTime: '@datetime("2020.MM.dd HH:mm:ss")',
         posCity: '孟买',
         posPoint: '23.2345.33.1234'
       })
@@ -195,8 +202,9 @@ export default {
         t[0].style.transform = 'translateY(-45px)'
       }, 1000)
     },
-    handleStickClick() {
-      this.$router.push('/workorder')
+    handleStickClick(item) {
+      const to = item.status === '失联状态' ? '/workorder' : '/tracing'
+      this.$router.push(to)
     },
     fixPx
   }

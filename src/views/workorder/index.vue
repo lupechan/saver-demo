@@ -17,6 +17,8 @@ import DogearBox from '@/components/DogearBox'
 import GroupList from './components/GroupList/index'
 import GroupInfo from './components/GroupInfo/index'
 
+import avatars from '@/assets/map_images/avatars.js'
+
 const data = Mock.mock({
   'groups|10': [{
     'id|+1': 0,
@@ -27,6 +29,7 @@ const data = Mock.mock({
     size: 6,
     'members|6': [{
       'id|+1': 0,
+      'avatar|1': avatars,
       name: '@cname',
       tel: /\130\d{8}/,
       role: function(a, b) {
@@ -41,6 +44,9 @@ const data = Mock.mock({
       }
     }],
     posTime: '@datetime("2020.MM.dd HH:mm")',
+    avatar: function() {
+      return this.members[0].avatar
+    },
     captain: function() {
       return this.members[0].name
     },
