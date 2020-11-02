@@ -40,7 +40,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: rgba(7, 18, 52, 0.7);
+  background-color: rgba(7, 18, 52, 0.7);
   mix-blend-mode: normal;
   // opacity: 0.7;
   // border: 1px solid transparent;

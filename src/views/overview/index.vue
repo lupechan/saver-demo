@@ -12,7 +12,7 @@
       </div>
 
       <div class="overview__map">
-        <dogear-box :no-scoll="true" class="overview__mapbg" :style="`background-image:url(${mapbg})`">
+        <dogear-box :no-scoll="true" class="overview__mapbg">
           <div class="overview__mapfront">
             <img :src="map" width="100%">
             <img src="@/assets/map_images/Group_262.png" width="118" style="position:absolute;bottom:20px;right:20px">
@@ -69,8 +69,7 @@ import TipsBox from './components/TipsBox'
 
 import { fixPx } from '@/utils'
 
-import mapbg from '@/assets/map_images/mapbg.png'
-import map from '@/assets/map_images/map01.png'
+import map from '@/assets/map_images/map.png'
 import avatars from '@/assets/map_images/avatars.js'
 
 import Mock, { Random } from 'mockjs'
@@ -137,7 +136,6 @@ export default {
   components: { DogearBox, HumenList, TipsBox, MsgList, Stickies },
   data() {
     return {
-      mapbg,
       map,
       timer: [],
       poses,
@@ -251,8 +249,6 @@ export default {
 }
 
 .overview__mapbg {
-  background-size: cover;
-  background-repeat: no-repeat;
   justify-content: center;
   padding: 20px;
 }
