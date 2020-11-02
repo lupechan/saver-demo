@@ -78,6 +78,7 @@ const data = Mock.mock({
   'focus|30': [{
     'avatar|1': avatars,
     userId: '@id',
+    creditId: '@id',
     username: '@cname',
     'status|1': ['失联状态', '正在搜救', '谈判状态', '告警状态'],
     tel: /\+86 130\d{8}/,

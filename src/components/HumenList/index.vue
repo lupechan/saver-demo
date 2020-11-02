@@ -1,7 +1,9 @@
 <template>
   <div class="humenlist-block">
     <div class="humenlist-user humenlist-item">
-      <div class="humenlist-user__avatar" :style="`background-image:url(${avatar})`" />
+      <div class="humenlist-user__avatar">
+        <img :src="avatar" width="100%">
+      </div>
       <div class="`humenlist-user__title`">
         <a v-if="info.username" @click="handleShowInfo">{{ info.username }}</a>
         <span v-else>{{ info.name }}</span>
@@ -105,8 +107,6 @@ export default {
     margin-right: 10px;
     border: 1px solid #FFFFFF77;
     border-radius: 50%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
     overflow: hidden;
   }
 

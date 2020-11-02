@@ -1,6 +1,6 @@
 <template>
   <div class="singal-stick">
-    <img class="stick-point" src="@/assets/map_images/10.png" width="20">
+    <img class="stick-point" src="@/assets/map_images/singal.png" width="20">
     <div class="stick-bound" />
   </div>
 </template>
