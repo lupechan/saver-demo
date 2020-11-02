@@ -79,6 +79,18 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+    config.module
+      .rule('vx')
+      .test(/\.(css|vue|scss)$/)
+      .use('px2vw-view-loader')
+      .loader('px2vw-view-loader')
+      .options({
+        viewportWidth: 1440,
+        viewportUnit: 'vw',
+        minPixelValue: 1,
+        decimal: 2
+      })
+      .end()
 
     config
       .when(process.env.NODE_ENV !== 'development',

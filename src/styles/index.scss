@@ -3,8 +3,27 @@
 @import './transition.scss';
 @import './element-ui.scss';
 @import './sidebar.scss';
+@import './animations.scss';
+@import './test.scss';
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track{
+background-color: rgba(255, 255, 255, 0.26);
+border-radius: 2px;
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb{
+border-radius: 2px;
+background-color: $primaryColor;
+}
 
 body {
+  font-size: 14px;
   height: 100%;
   background-color: #0F0A23;
   color: white;
@@ -64,4 +83,53 @@ div:focus {
 // main-container global css
 .app-container {
   padding: 20px;
+}
+
+$dotWidth: 6pt;
+$dotHeight: 8pt;
+$dotBorderWidth: 1.5pt;
+$dotColor: #5A82EA;
+
+$pix: -1pt;
+
+@mixin dot {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: $dotWidth;
+  height: $dotHeight;
+  border-width: $dotBorderWidth;
+  border-color: $dotColor;
+}
+
+.dotban-bottom {
+  &::before {
+    @include dot;
+    bottom: $pix;
+    left: $pix;
+    border-style: none none solid solid;
+  }
+
+  &::after {
+    @include dot;
+    bottom: $pix;
+    right: $pix;
+    border-style: none solid solid none;
+  }
+}
+
+.dotban-top {
+  &::before {
+    @include dot;
+    top: $pix;
+    left: $pix;
+    border-style: solid none none solid;
+  }
+
+  &::after {
+    @include dot;
+    top: $pix;
+    right: $pix;
+    border-style: solid solid none none;
+  }
 }

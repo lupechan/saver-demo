@@ -46,33 +46,25 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/overview',
+    redirect: '/entry-exit',
     children: [{
       path: 'overview',
       name: 'Overview',
       component: () => import('@/views/overview/index'),
-      meta: { title: '总体情况总览', icon: 'dashboard' }
+      meta: { title: '总体情况总览', icon: 'dashboard', activeMenu: 'overview' }
     }]
   },
 
   {
     path: '/tracing',
     component: Layout,
-    redirect: '/tracing/page1',
-    name: 'Tracing',
     meta: { title: '报警救援全程跟踪', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'page1',
-        name: 'Tracing1',
-        component: () => import('@/views/tracing/page1'),
-        meta: { title: '跟踪页面1', icon: 'table' }
-      },
-      {
-        path: 'page2',
-        name: 'Tracing2',
-        component: () => import('@/views/tracing/page2'),
-        meta: { title: '跟踪页面2', icon: 'tree' }
+        path: '',
+        name: 'Tracing',
+        component: () => import('@/views/tracing/index'),
+        meta: { title: '跟踪页面', icon: 'table', activeMenu: 'tracing' }
       }
     ]
   },
@@ -82,10 +74,10 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: '',
         name: 'WorkOrder',
         component: () => import('@/views/workorder/index'),
-        meta: { title: '指派工单', icon: 'link' }
+        meta: { title: '指派工单', icon: 'link', activeMenu: 'tracing' }
       }
     ]
   },
@@ -95,10 +87,10 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: '',
         name: 'Records',
         component: () => import('@/views/records/index'),
-        meta: { title: '报警日志', icon: 'form' }
+        meta: { title: '报警日志', icon: 'form', activeMenu: 'records' }
       }
     ]
   },
@@ -108,10 +100,23 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
+        path: '',
         name: 'History',
         component: () => import('@/views/history/index'),
-        meta: { title: '救援历史记录', icon: 'form' }
+        meta: { title: '救援历史记录', icon: 'form', activeMenu: 'history' }
+      }
+    ]
+  },
+
+  {
+    path: '/entry-exit',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'Entry & Exit Infomation',
+        component: () => import('@/views/entry-exit/index'),
+        meta: { title: '出入境信息', icon: 'form', activeMenu: 'entry-exit' }
       }
     ]
   },

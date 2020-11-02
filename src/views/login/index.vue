@@ -94,6 +94,10 @@ export default {
       immediate: true
     }
   },
+  mounted() {
+    // 跳过登陆页面
+    this.handleLogin()
+  },
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {
