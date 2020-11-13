@@ -100,7 +100,7 @@ import Mock, { Random } from 'mockjs'
 
 const data = Mock.mock({
   'helpSeeker': {
-    'avatar|1': avatars,
+    avatar: avatars[0],
     userId: '@id',
     username: '@cname',
     creditId: '@id',
@@ -116,10 +116,13 @@ const data = Mock.mock({
     size: 6,
     'members|6': [{
       'id|+1': 0,
-      'avatar|1': avatars,
+      'avatar|1': function() {
+        const no = (this.id + 2) % 16
+        return avatars[no]
+      },
       name: '@cname',
-      tel: /\130\d{8}/,
-      role: function(a, b) {
+      tel: /130\d{8}/,
+      role: function() {
         const no = (this.id + 1) % 6
         if (no === 1) return '队长'
         if (no === 2) return '副队长'
@@ -140,7 +143,7 @@ const data = Mock.mock({
   },
   'records|20': [{
     'title': '@datetime("2020.MM.dd HH:mm")',
-    'subTitle': '李四位置坐标：35.1234.23.1234'
+    'subTitle': '@cname()位置坐标：35.1234.23.1234'
   }],
   'keyInfo|4': [{
     'title': () => {

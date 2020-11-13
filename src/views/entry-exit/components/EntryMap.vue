@@ -8,12 +8,12 @@
     <inout-tips :in-num="52" :out-num="12" style="top: 36%;left:70%;" />
     <inout-tips :in-num="10" :out-num="8" style="top: 67.5%;left:79.5%;" />
 
-    <boundry title="入境地区：北美" :src="BoundryImg1" width="28%" top="25%" left="5%" />
-    <boundry title="入境地区：格陵兰" :src="BoundryImg2" width="14%" top="16.8%" left="29%" />
-    <boundry title="入境地区：亚欧" :src="BoundryImg3" width="47.5%" top="21%" left="44.8%" />
-    <boundry title="入境地区：南美" :src="BoundryImg4" width="11.7%" top="53.7%" left="26.7%" />
-    <boundry title="入境地区：非洲" :src="BoundryImg5" width="17.4%%" top="43.2%" left="42.8%" />
-    <boundry title="入境地区：澳洲" :src="BoundryImg6" width="10%" top="63.6%" left="75.8%" />
+    <boundry title="入境国家：美国" :src="BoundryImg1" width="28%" top="25%" left="5%" />
+    <boundry title="入境国家：丹麦" :src="BoundryImg2" width="14%" top="16.8%" left="29%" />
+    <boundry title="入境国家：中国" :src="BoundryImg3" width="47.5%" top="21%" left="44.8%" />
+    <boundry title="入境国家：巴西" :src="BoundryImg4" width="11.7%" top="53.7%" left="26.7%" />
+    <boundry title="入境国家：埃及" :src="BoundryImg5" width="17.4%%" top="43.2%" left="42.8%" />
+    <boundry title="入境国家：澳大利亚" :src="BoundryImg6" width="10%" top="63.6%" left="75.8%" />
 
     <div class="entry-map__airline-box" style="width: 28%;top: 33.5%;left:49.7%;">
       <img class="entry-map__airline" src="@/assets/map_images/airline1.png">

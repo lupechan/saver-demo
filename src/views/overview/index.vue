@@ -23,7 +23,7 @@
                 :avatar="item.avatar"
                 :title="`${item.username}（${item.status}）`"
                 :sub-title="item.tel"
-                :active-color="item.status === '失联状态' ? '#FF2482' : '#0085FF'"
+                :active-color="item.status === '失联状态' ? '#FF2482' : '#24CBFFFF'"
                 active-trigger="always"
                 @click.native="handleStickClick(item)"
               >
@@ -75,8 +75,12 @@ import avatars from '@/assets/map_images/avatars.js'
 import Mock, { Random } from 'mockjs'
 
 const data = Mock.mock({
-  'focus|30': [{
-    'avatar|1': avatars,
+  'focus|16': [{
+    'msgid|+1': 0,
+    'avatar|1': function() {
+      const no = (this.msgid + 1) % 16
+      return avatars[no]
+    },
     userId: '@id',
     creditId: '@id',
     username: '@cname',
@@ -104,7 +108,11 @@ const data = Mock.mock({
     posPoint: '23.2345.33.1234'
   }],
   'helpSeeker|10': [{
-    'avatar|1': avatars,
+    'msgid|+1': 0,
+    'avatar|1': function() {
+      const no = (this.msgid + 1) % 10
+      return avatars[no]
+    },
     userId: '@id',
     username: '@cname',
     'status|1': ['失联状态', '失联状态', '正在搜救', '救助状态', '告警状态'],

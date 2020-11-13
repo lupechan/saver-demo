@@ -3,8 +3,8 @@
     <!-- <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
-    <div style="margin:0 100px 0 30px;width=90px">
-      <img src="@/assets/map_images/logo.png" alt="" style="flex: none" width="100%">
+    <div style="margin:0 100px 0 30px;width=180px;height:30px;">
+      <img src="@/assets/map_images/logo.png" alt="" style="flex: none;max-height:100%;max-width:100%;">
     </div>
     <el-menu
       :default-active="activeIndex"

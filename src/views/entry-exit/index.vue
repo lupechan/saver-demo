@@ -1,10 +1,12 @@
 <template>
   <div class="entry-exit">
-    <dogear-box class="entry-exit__search" title="搜索">
-      <search-box @search="handleSearch" />
-    </dogear-box>
+    <div class="entry-exit__block">
+      <dogear-box class="entry-exit__search" title="搜索">
+        <search-box @search="handleSearch" />
+      </dogear-box>
 
-    <entry-map class="entry-exit__map" />
+      <entry-map class="entry-exit__map" />
+    </div>
 
     <dogear-box v-show="showResultBox" title="搜索结果" class="entry-exit__result" :no-scoll="true">
       <template v-slot:header-append>
@@ -41,10 +43,13 @@ export default {
 
 <style lang="scss">
 .entry-exit {
-  display: flex;
   position: relative;
-  width: 100%;
-  overflow: auto;
+  // overflow: auto;
+
+  &__block {
+    display: flex;
+    width: 100%;
+  }
 
   &__search {
     flex: 0 0 278px;

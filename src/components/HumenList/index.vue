@@ -5,8 +5,10 @@
         <img :src="avatar" width="100%">
       </div>
       <div class="`humenlist-user__title`">
-        <a v-if="info.username" @click="handleShowInfo">{{ info.username }}</a>
-        <span v-else>{{ info.name }}</span>
+        <a v-if="info.username" @click="handleShowInfo">
+          <strong>{{ info.username }}</strong>
+        </a>
+        <strong v-else>{{ info.name }}</strong>
         <span v-show="info.role != null">（{{ info.role }}）</span>
         <div v-if="info.status != null" class="humenlist-user__status">状态：{{ info.status }} </div>
       </div>
