@@ -1,8 +1,8 @@
 <template>
   <div class="group-list">
-    <el-radio-group v-model="checked" class="group-list__wrap">
+    <el-checkbox-group v-model="currentChecked" class="group-list__wrap" @change="handleCheckedChange">
       <group-item v-for="(item, index) in data" :key="item.id" :data="item" :label="index" />
-    </el-radio-group>
+    </el-checkbox-group>
   </div>
 </template>
 
@@ -15,19 +15,20 @@ export default {
       type: Array,
       default: () => []
     },
-    checkedIndex: {
-      type: Number,
-      default: 0
+    checkedList: {
+      type: Array,
+      default: () => []
     }
   },
-  computed: {
-    checked: {
-      get() {
-        return this.checkedIndex
-      },
-      set(val) {
-        this.$emit('update:checkedIndex', val)
-      }
+  data() {
+    return {
+      currentChecked: this.checkedList
+    }
+  },
+  methods: {
+    handleCheckedChange(val) {
+      this.currentChecked = val
+      this.$emit('update:checkedList', val)
     }
   }
 }

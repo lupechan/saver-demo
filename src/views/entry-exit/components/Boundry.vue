@@ -9,9 +9,8 @@
     <img
       slot="reference"
       class="boundry"
-      :width="width"
       :src="src"
-      :style="`left:${left};top:${top};`"
+      :style="`left:${left};top:${top};width:${width}`"
     >
 
     <div slot="default">

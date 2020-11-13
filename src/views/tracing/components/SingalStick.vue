@@ -22,8 +22,8 @@ export default {
   }
 
   .stick-bound {
-    width: 111px;
-    height: 111px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     position: absolute;
     left: 50%;

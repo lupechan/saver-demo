@@ -1,7 +1,7 @@
 <template>
   <div class="tracing-container">
     <div class="tracing-slider">
-      <dogear-box title="求救人" style="flex: 0 0 348px" :no-scoll="true">
+      <dogear-box title="求救人" style="flex: 0 0 410px" :no-scoll="true">
         <humen-list :info="helpSeekerData">
           <template v-slot:userinfo-append>
             <el-dropdown class="tracing__dropdown">
@@ -16,14 +16,14 @@
         </humen-list>
       </dogear-box>
 
-      <dogear-box title="搜救组">
-        <template v-slot:header-append>
+      <dogear-box title="搜救队">
+        <!-- <template v-slot:header-append>
           <div class="tracing__team">
-            <div>搜救组： {{ rescueTeamData.name }}</div>
+            <div>搜救队： {{ rescueTeamData.name }}</div>
             <span style="margin-right: 50px;">人数： {{ rescueTeamData.size }}人</span>
             <span>队长： {{ rescueTeamData.captain }}</span>
           </div>
-        </template>
+        </template> -->
         <humen-list v-for="info in rescueTeamData.members" :key="info.userId" :info="info" />
       </dogear-box>
     </div>
@@ -32,23 +32,25 @@
       <div class="tracing__map">
         <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`">
           <div style="width:100%;">
-            <img src="@/assets/map_images/Group_101.png" width="326" style="position:absolute;bottom:20px;right:20px">
+            <img src="@/assets/map_images/Group_101.png" width="254" style="position:absolute;bottom:20px;right:20px">
+            <img src="@/assets/map_images/Group_103.png" width="210" style="position:absolute;top:20px;left:20px">
 
-            <singal-stick style="top:45%;left:35%" />
-            <singal-stick style="top:51%;left:24%" />
-            <singal-stick style="top:57%;left:35%" />
+            <singal-stick style="top:45%;left:45%" />
+            <singal-stick style="top:51%;left:40%" />
+            <singal-stick style="top:47%;left:35%" />
 
-            <mark-stick style="top:53.5%;left:31.5%" title="1" />
-            <mark-stick style="top:70%;left:50%" title="2" :show-boundary="showNextStep" />
+            <mark-stick style="top:53.5%;left:41.5%" title="1" />
 
-            <seeker-stick style="top:56%;left:40%" />
+            <seeker-stick style="top:50%;left:50%; transform: translate(-50%, -50%); width: 100%; height: 100%" />
 
-            <template v-if="showNextStep">
-              <singal-stick style="top:72%;left:53%" />
-              <singal-stick style="top:78%;left:64%" />
-              <singal-stick style="top:66%;left:63%" />
+            <template>
+              <singal-stick style="top:62%;left:55%" />
+              <singal-stick style="top:56%;left:63%" />
+              <mark-stick style="top:65%;left:58%" title="2" />
+              <!-- <mark-stick style="top:65%;left:58%" title="2" :show-boundary="showNextStep" /> -->
 
-              <mark-stick style="top:75%;left:60%" title="3" />
+              <singal-stick style="top:68%;left:40%" />
+              <mark-stick style="top:75%;left:40%" title="3" />
             </template>
           </div>
           <template v-for="item in rescueTeamData.members">
@@ -57,12 +59,13 @@
               :avatar="item.avatar"
               active-color="#0085FF"
               active-trigger="always"
-              :title="`搜救组： ${ rescueTeamData.name }`"
+              :title="`搜救队： ${ rescueTeamData.name }`"
               :sub-title="`${ item.role }：${ item.name }`"
               @click.native="handleStickClick"
             >
-              <div>搜救能力：谈判、狙击、医务</div>
-              <div>携带装备：搜救犬、无人机</div>
+              <div style="margin-bottom: 14px;">搜救能力：谈判、狙击、医务</div>
+              <div style="margin-bottom: 14px;">携带装备：搜救犬、无人机</div>
+              <div style="margin-bottom: 14px;">当前经纬度：{{ item.LNGuide[0] }}°N, {{ item.LNGuide[1]}}°W</div>
             </stickies>
           </template>
         </dogear-box>
@@ -108,8 +111,10 @@ const data = Mock.mock({
     callTime: '@datetime("2020.MM.dd HH:mm")',
     posTime: '@datetime("2020.MM.dd HH:mm")',
     'abo|1': ['A', 'B', 'O', 'AB'],
+    lostTime: '1小时',
     history: '无',
-    allergen: '无'
+    allergen: '无',
+    insurance: 'B88399332'
   },
   'rescueTeam': {
     name: '长城三组',
@@ -131,7 +136,8 @@ const data = Mock.mock({
       posTime: '@datetime("2020.MM.dd HH:mm")',
       skills: function() {
         return ['狙击', '谈判', '医务', '搜救'][~~(Math.random() * 4)]
-      }
+      },
+      LNGuide: ['@integer(0, 180)', '@integer(0, 90)']
     }],
     posTime: '@datetime("2020.MM.dd HH:mm")',
     captain: function() {
@@ -177,9 +183,9 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.showNextStep = true
-    }, 10000)
+    // setTimeout(() => {
+    //   this.showNextStep = true
+    // }, 10000)
   },
   methods: {
     handleStickClick() {

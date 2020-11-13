@@ -3,6 +3,9 @@
     <img class="stick-icon" src="@/assets/map_images/stick1.png" width="20">
     <div class="stick-point" />
     <div class="stick-bound" />
+    <div class="stick-car" />
+    <img class="stick-airplane" src="@/assets/map_images/airplane.png" alt="">
+    <img class="stick-boat" src="@/assets/map_images/boat.png" alt="">
     <div class="stick-wave" />
     <!-- <div class="stick-icon" /> -->
   </div>
@@ -24,8 +27,10 @@ export default {
     width: 20px;
     height: 23px;
     position: absolute;
-    left: -3px;
-    bottom: 10px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -30px;
     animation: float 1s ease-in-out infinite alternate;
     z-index: 10;
   }
@@ -34,29 +39,60 @@ export default {
     width: 14px;
     height: 14px;
     position: relative;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #C347BD;
     border-radius: 50%;
     z-index: 9;
   }
 
-  .stick-bound, .stick-wave {
-    width: 268px;
-    height: 268px;
+  .stick-bound,
+  .stick-wave {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+    margin-top: -75px;
     border-radius: 50%;
     position: absolute;
-    left: -127px;
-    top: -127px;
-    // transform: translate(-50%, -50%);
-    background: #193AEC;;
+    left: 50%;
+    top: 50%;
+    background: #193AEC;
     opacity: 0.2;
-    z-index: 1;
+    z-index: 2;
   }
 
   .stick-wave {
-    transform: scale(0);
     animation: wave 2s ease-in-out 1s infinite;
+  }
+
+  .stick-car {
+    width: 472px;
+    height: 472px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #7F47B5;
+     opacity: 0.2;
+     z-index: 1;
+  }
+
+  .stick-boat {
+    position: absolute;
+    right: 2%;
+    bottom: 6%;
+    width: 271px;
+    transform: rotate(2deg);
+  }
+
+  .stick-airplane {
+    position: absolute;
+    left: 40%;
+    top: 10%;
+    width: 121px;
+    height: 83px;
   }
 
   // .stick-icon {

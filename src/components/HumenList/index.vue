@@ -8,8 +8,11 @@
         <a v-if="info.username" @click="handleShowInfo">
           <strong>{{ info.username }}</strong>
         </a>
-        <strong v-else>{{ info.name }}</strong>
-        <span v-show="info.role != null">（{{ info.role }}）</span>
+        <template v-else>
+          <strong>{{ info.name }}</strong>
+          <p style="margin:8px 0 0 0; font-size: 12px; color: rgba(255,255,255,.7)">技能：{{ info.skills }}</p>
+        </template>
+        <!-- <span v-show="info.role != null">（{{ info.role }}）</span> -->
         <div v-if="info.status != null" class="humenlist-user__status">状态：{{ info.status }} </div>
       </div>
       <slot name="userinfo-append" />
@@ -29,12 +32,14 @@ const infoWords = [
   { key: 'creditId', name: '证件号' },
   { key: 'callTime', name: '求救时间' },
   { key: 'posTime', name: '最新定位时间' },
+  { key: 'lostTime', name: '距离失联时长' },
   { key: 'pos', name: '最新定位' },
   { key: 'job', name: '职位' },
   { key: 'age', name: '年龄' },
   { key: 'abo', name: '血型' },
   { key: 'history', name: '既往病史' },
-  { key: 'allergen', name: '过敏原' }
+  { key: 'allergen', name: '过敏原' },
+  { key: 'insurance', name: '保险账号' }
 ]
 
 import defaultAvatar from '@/assets/map_images/1.png'

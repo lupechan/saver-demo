@@ -1,16 +1,17 @@
 <template>
   <div class="group-item">
-    <el-radio class="group-item" :label="label">
+    <el-checkbox class="group-item" :label="label">
       <div class="group-item__box">
         <div class="group-item__avatar">
           <img :src="data.avatar" width="100%">
         </div>
         <div class="group-item__info">
           <div class="group-item__name">{{ data.name }}</div>
-          <div class="group-item__descr">
+          <div>技能：{{ data.skills }}</div>
+          <!-- <div class="group-item__descr">
             <span>队长：{{ data.captain }}</span>
             <span>人数：{{ data.size }}</span>
-          </div>
+          </div> -->
           <div>与救助人员距离：{{ data.distance }}</div>
           <div>最新定位时间：{{ data.posTime }}</div>
         </div>
@@ -19,7 +20,7 @@
           可执行
         </div>
       </div>
-    </el-radio>
+    </el-checkbox>
   </div>
 </template>
 

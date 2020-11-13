@@ -2,9 +2,9 @@
   <div class="workorder-container">
     <dogear-box title="求救人：张三">
       <div class="workorder">
-        <group-list :checked-index.sync="checkedIndex" :data="groups" class="workorder__groups-block" />
+        <group-list :checked-list.sync="checkedList" :data="groups" class="workorder__groups-block" />
         <div class="workorder__info-block">
-          <group-info :data="activeGroup" />
+          <group-info :data="activeGroup"/>
         </div>
       </div>
     </dogear-box>
@@ -19,41 +19,62 @@ import GroupInfo from './components/GroupInfo/index'
 
 import avatars from '@/assets/map_images/avatars.js'
 
+// const data = Mock.mock({
+//   'groups|10': [{
+//     'id|+1': 0,
+//     name: function() {
+//       const no = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'][this.id]
+//       return `长城${no}组`
+//     },
+//     size: 6,
+//     'members|6': [{
+//       'id|+1': 0,
+//       'avatar|1': avatars,
+//       name: '@cname',
+//       tel: /\130\d{8}/,
+//       role: function(a, b) {
+//         const no = (this.id + 1) % 6
+//         if (no === 1) return '队长'
+//         if (no === 2) return '副队长'
+//         return '队员'
+//       },
+//       posTime: '@datetime("2020.MM.dd HH:mm")',
+//       skills: function() {
+//         return ['狙击', '谈判', '医务', '搜救'][~~(Math.random() * 4)]
+//       }
+//     }],
+//     posTime: '@datetime("2020.MM.dd HH:mm")',
+//     avatar: function() {
+//       return this.members[0].avatar
+//     },
+//     captain: function() {
+//       return this.members[0].name
+//     },
+//     'radar|5': ['@integer(40, 90)'],
+//     equips: '无人机、搜救犬、医疗包',
+//     distance: '@integer(10, 80)km'
+//   }]
+// })
+
 const data = Mock.mock({
-  'groups|10': [{
+  'members|6': [{
     'id|+1': 0,
-    name: function() {
-      const no = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'][this.id]
-      return `长城${no}组`
+    'avatar|1': avatars,
+    name: '@cname',
+    tel: /\130\d{8}/,
+    role: function(a, b) {
+      const no = (this.id + 1) % 6
+      if (no === 1) return '队长'
+      if (no === 2) return '副队长'
+      return '队员'
     },
-    size: 6,
-    'members|6': [{
-      'id|+1': 0,
-      'avatar|1': avatars,
-      name: '@cname',
-      tel: /\130\d{8}/,
-      role: function(a, b) {
-        const no = (this.id + 1) % 6
-        if (no === 1) return '队长'
-        if (no === 2) return '副队长'
-        return '队员'
-      },
-      posTime: '@datetime("2020.MM.dd HH:mm")',
-      skills: function() {
-        return ['狙击', '谈判', '医务', '搜救'][~~(Math.random() * 4)]
-      }
-    }],
     posTime: '@datetime("2020.MM.dd HH:mm")',
-    avatar: function() {
-      return this.members[0].avatar
+    skills: function() {
+      return ['狙击', '谈判', '医务', '搜救'][~~(Math.random() * 4)]
     },
-    captain: function() {
-      return this.members[0].name
-    },
-    'radar|5': ['@integer(40, 90)'],
-    equips: '无人机、搜救犬、医疗包',
     distance: '@integer(10, 80)km'
-  }]
+  }],
+  'radar|5': ['@integer(40, 90)']
 })
 
 export default {
@@ -61,15 +82,20 @@ export default {
   components: { DogearBox, GroupList, GroupInfo },
   data() {
     return {
-      checkedIndex: 0
+      checkedList: []
     }
   },
   computed: {
     groups() {
-      return data.groups.sort((a, b) => { return parseInt(a.distance) - parseInt(b.distance) })
+      return data.members.sort((a, b) => { return parseInt(a.distance) - parseInt(b.distance) })
+      // return data.groups.sort((a, b) => { return parseInt(a.distance) - parseInt(b.distance) })
     },
     activeGroup() {
-      return this.groups[this.checkedIndex]
+      let activeMembers = []
+      this.checkedList.forEach(item => {
+        activeMembers.push(data.members[item])
+      })
+      return activeMembers
     }
   }
 }

@@ -4,28 +4,28 @@
       <div class="groupinfo-list">
         <div class="groupinfo-list__title list-item">搜救队信息</div>
         <div class="groupinfo-list__body">
-          <div><span>队名：</span><span>{{ data.name }}</span></div>
-          <div><span>队长：</span><span>{{ data.captain }}</span></div>
-          <div><span>与救助人员距离：</span><span>{{ data.distance }}</span></div>
-          <div><span>最新定位时间：</span><span>{{ data.posTime }}</span></div>
-          <div><span>物资：</span><span>{{ data.equips }}</span></div>
+          <div><span>搜救队人数：</span><span>{{ groupCount || '' }}</span></div>
+          <div><span>与救助人员最近距离：</span><span>{{ groupNearDistance || '' }}</span></div>
+          <div><span>与救助人员最远距离：</span><span>{{ groupFarDistance || '' }}</span></div>
+          <div><span>最新定位时间：</span><span>{{ groupPosTime || '' }}</span></div>
+          <div><span>物资：</span><span>无人机、搜救犬、医疗包</span></div>
         </div>
       </div>
 
       <div class="groupinfo-radar">
         <div class="list-item">搜救队能力雷达</div>
-        <skills-radar class="groupinfo-radar__cvs" width="260px" height="240px" :data="data.radar" />
+        <skills-radar class="groupinfo-radar__cvs" width="260px" height="240px" :data="radarData.radar" />
       </div>
 
     </div>
 
     <el-row :gutter="22">
-      <el-col v-for="item in data.members" :key="item.id" :span="8">
+      <el-col v-for="item in data" :key="item.id" :span="8">
         <member-item :data="item" />
       </el-col>
     </el-row>
 
-    <el-button type="primary" @click="handleClick">确认派单</el-button>
+    <el-button type="primary" @click="handleClick">确认</el-button>
 
   </div>
 </template>
@@ -33,15 +33,58 @@
 <script>
 import MemberItem from './MemberItem'
 import SkillsRadar from '@/components/SkillsRadar'
+import Mock from 'mockjs'
+
+const radarData = Mock.mock({
+  'radar|5': ['@integer(40, 90)']
+})
 
 export default {
   components: { MemberItem, SkillsRadar },
   props: {
     data: {
-      type: Object,
+      type: Array,
       default() {
-        return {}
+        return []
       }
+    }
+  },
+  computed: {
+    groupCount() {
+      return this.data.length
+    },
+    groupNearDistance() {
+      let distanceSort = []
+      distanceSort = this.data.sort((a, b) => {
+        return parseInt(a.distance) - parseInt(b.distance)
+      })
+      return distanceSort[0] ?  distanceSort[0].distance : ''
+    },
+    groupFarDistance() {
+      let distanceSort = []
+      distanceSort = this.data.sort((a, b) => {
+        return parseInt(a.distance) - parseInt(b.distance)
+      })
+      return distanceSort[this.data.length - 1] ? distanceSort[this.data.length - 1].distance : ''
+    },
+    groupPosTime() {
+      let posTimeSort = []
+      posTimeSort = this.data.sort((a, b) => {
+        return Date.parse(a.posTime) - Date.parse(b.posTime)
+      })
+      return posTimeSort[posTimeSort.length - 1] ? posTimeSort[posTimeSort.length - 1].posTime : ''
+    }
+  },
+  data() {
+    return {
+      radarData: []
+    }
+  },
+  watch: {
+    'data'() {
+      this.radarData = Mock.mock({
+        'radar|5': ['@integer(40, 90)']
+      })
     }
   },
   methods: {

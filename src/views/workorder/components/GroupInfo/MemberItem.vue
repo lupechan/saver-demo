@@ -3,7 +3,7 @@
     <div style="display: flex;">
       <img class="member-item__avatar" :src="data.avatar" alt="" width="40">
       <div class="member-item__info">
-        <div>{{ data.name }}（{{ data.role }}）</div>
+        <div>{{ data.name }}</div>
         <div>手机号：{{ data.tel }}</div>
       </div>
     </div>
