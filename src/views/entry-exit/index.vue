@@ -5,7 +5,7 @@
         <search-box @search="handleSearch" />
       </dogear-box>
 
-      <entry-map class="entry-exit__map" :showAirLine="showResultBox"/>
+      <entry-map class="entry-exit__map" :show-air-line="showResultBox" />
     </div>
 
     <dogear-box v-show="showResultBox" title="搜索结果" class="entry-exit__result" :no-scoll="true">

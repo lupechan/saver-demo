@@ -33,7 +33,7 @@
         <dogear-box :no-scoll="true" class="tracing__mapbg" :style="`background-image:url(${mapbg})`">
           <div style="width:100%;">
             <img src="@/assets/map_images/Group_101.png" width="254" style="position:absolute;bottom:20px;right:20px">
-            <img src="@/assets/map_images/Group_103.png" width="210" style="position:absolute;top:20px;left:20px">
+            <img src="@/assets/map_images/Group_103.png" width="280" style="position:absolute;top:20px;left:20px">
 
             <singal-stick style="top:45%;left:45%" />
             <singal-stick style="top:51%;left:40%" />
@@ -65,7 +65,7 @@
             >
               <div style="margin-bottom: 14px;">搜救能力：谈判、狙击、医务</div>
               <div style="margin-bottom: 14px;">携带装备：搜救犬、无人机</div>
-              <div style="margin-bottom: 14px;">当前经纬度：{{ item.LNGuide[0] }}°N, {{ item.LNGuide[1]}}°W</div>
+              <div style="margin-bottom: 14px;">当前经纬度：{{ item.LNGuide[0] }}°N, {{ item.LNGuide[1] }}°W</div>
             </stickies>
           </template>
         </dogear-box>
@@ -103,10 +103,11 @@ import Mock, { Random } from 'mockjs'
 
 const data = Mock.mock({
   'helpSeeker': {
-    avatar: avatars[0],
+    avatar: avatars[0].avatars,
     userId: '@id',
-    username: '@cname',
-    creditId: '@id',
+    username: avatars[0].name,
+    sex: avatars[0].sex,
+    creditId: 'DE4256795（护照）',
     tel: /\+86 130\d{8}/,
     callTime: '@datetime("2020.MM.dd HH:mm")',
     posTime: '@datetime("2020.MM.dd HH:mm")',
@@ -123,9 +124,12 @@ const data = Mock.mock({
       'id|+1': 0,
       'avatar|1': function() {
         const no = (this.id + 2) % 16
-        return avatars[no]
+        return avatars[no].avatar
       },
-      name: '@cname',
+      name: function() {
+        const no = (this.id + 2) % 16
+        return avatars[no].name
+      },
       tel: /130\d{8}/,
       role: function() {
         const no = (this.id + 1) % 6

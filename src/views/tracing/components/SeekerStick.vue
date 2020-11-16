@@ -81,18 +81,17 @@ export default {
 
   .stick-boat {
     position: absolute;
-    right: 2%;
-    bottom: 6%;
+    right: 7%;
+    bottom: 2%;
     width: 271px;
-    transform: rotate(2deg);
+    transform: rotate(12deg);
   }
 
   .stick-airplane {
     position: absolute;
     left: 40%;
-    top: 10%;
-    width: 121px;
-    height: 83px;
+    top: 8%;
+    width: 150px;
   }
 
   // .stick-icon {

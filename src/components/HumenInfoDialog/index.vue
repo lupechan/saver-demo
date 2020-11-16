@@ -9,7 +9,7 @@
           <div class="humeninfo-list__title">个人信息</div>
           <div class="humeninfo-list__body">
             <div><span>姓名：</span><span>{{ data.username }}</span></div>
-            <div><span>性别：</span><span>男</span></div>
+            <div><span>性别：</span><span>{{ data.sex }}</span></div>
             <div><span>手机号：</span><span>+86 158 8888 8888</span></div>
             <div><span>出生日期：</span><span>1976.01.01</span></div>
             <div><span>证件号：</span><span>DE4256795（护照）</span></div>
@@ -38,10 +38,7 @@
             <div><span>出境口岸：</span><span>中国/首都国际机场(PEK)</span></div>
             <div><span>出境时间：</span><span>2020.11.01 12:36</span></div>
             <div><span>入境国家：</span><span>纽约</span></div>
-            <div style="line-height: 20px"><span>联程航班：</span><span>国泰航空 CX39<br>
-(北京 11.01 13:45-香港 11.01 17:30)<br>
-国泰航空 CX844<br>
-(香港11.02 13:45-纽约11.02 13:45)</span></div>
+            <div style="line-height: 20px"><span>联程航班：</span><span>国泰航空 CX39<br>(北京 11.01 13:45-香港 11.01 17:30)<br>国泰航空 CX844<br>(香港11.02 13:45-纽约11.02 13:45)</span></div>
             <div><span>机场：</span><span>纽约/肯尼迪国际机场(JFK)</span></div>
             <!-- <div><span>航班时间：</span><span>2020.11.01 12:36</span></div> -->
           </div>

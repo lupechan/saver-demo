@@ -10,8 +10,8 @@
 
     <boundry :title="boundry('加拿大')" :src="BoundryImg1" width="200.59px" top="169px" left="260px" />
     <boundry :title="boundry('美国')" :src="BoundryImg2" width="180px" top="145px" left="170px" />
-    <boundry :title="boundry('美国')" :src="BoundryImg3" width="202.98px" top="130px" left="718px" />
-    <boundry :title="boundry('俄罗斯')" :src="BoundryImg4" width="274px" top="100px" left="509.74px"/>
+    <boundry :title="boundry('中国')" :src="BoundryImg3" width="202.98px" top="130px" left="718px" />
+    <boundry :title="boundry('俄罗斯')" :src="BoundryImg4" width="274px" top="100px" left="509.74px" />
     <!-- <boundry title="当前经纬度：印度（45°N，76°W）" :src="BoundryImg5" width="6%" top="43.2%" left="82.4%" /> -->
 
     <div class="entry-map__airline-box" style="width: 60%;top: 33.5%;left:20%;">
@@ -24,7 +24,7 @@
       <air-plane plane-style="transform:translate(132px, 12px) rotate(-20deg)" />
     </div>
 
-     <!-- <div class="entry-map__airline-box" style="width: 51%;top: 29.7%;left:26.7%;">
+    <!-- <div class="entry-map__airline-box" style="width: 51%;top: 29.7%;left:26.7%;">
       <img class="entry-map__airline" src="@/assets/map_images/airline3.png">
       <air-plane plane-style="transform:translate(272px, -8px) rotate(10deg)" />
     </div>
@@ -93,7 +93,8 @@ export default {
     handleMouseMove() {
       this.nlData = [Math.floor(Math.random() * 180), Math.floor(Math.random() * 90)]
     },
-    boundry(area){
+
+    boundry(area) {
       return `当前经纬度：${area}（${this.nlData[0]}°N，${this.nlData[1]}°W）`
     }
   }

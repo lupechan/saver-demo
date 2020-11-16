@@ -79,11 +79,14 @@ const data = Mock.mock({
     'msgid|+1': 0,
     'avatar|1': function() {
       const no = (this.msgid + 1) % 16
-      return avatars[no]
+      return avatars[no].avatar
     },
     userId: '@id',
-    creditId: '@id',
-    username: '@cname',
+    creditId: 'DE4256795（护照）',
+    username: function() {
+      const no = (this.msgid + 1) % 16
+      return avatars[no].name
+    },
     'status|1': ['失联状态', '正在搜救', '谈判状态', '告警状态'],
     tel: /\+86 130\d{8}/,
     posTime: '@datetime("2020.MM.dd HH:mm")',
@@ -111,10 +114,13 @@ const data = Mock.mock({
     'msgid|+1': 0,
     'avatar|1': function() {
       const no = (this.msgid + 1) % 10
-      return avatars[no]
+      return avatars[no].avatar
     },
     userId: '@id',
-    username: '@cname',
+    username: function() {
+      const no = (this.msgid + 1) % 10
+      return avatars[no].name
+    },
     'status|1': ['失联状态', '失联状态', '正在搜救', '救助状态', '告警状态'],
     tel: /\+86 130\d{8}/,
     posTime: '@datetime("2020.MM.dd HH:mm")',

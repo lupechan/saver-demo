@@ -4,7 +4,7 @@
       <div class="workorder">
         <group-list :checked-list.sync="checkedList" :data="groups" class="workorder__groups-block" />
         <div class="workorder__info-block">
-          <group-info :data="activeGroup"/>
+          <group-info :data="activeGroup" />
         </div>
       </div>
     </dogear-box>
@@ -59,8 +59,14 @@ import avatars from '@/assets/map_images/avatars.js'
 const data = Mock.mock({
   'members|6': [{
     'id|+1': 0,
-    'avatar|1': avatars,
-    name: '@cname',
+    'avatar|1': function() {
+      const no = (this.id + 2) % 16
+      return avatars[no].avatar
+    },
+    name: function() {
+      const no = (this.id + 2) % 16
+      return avatars[no].name
+    },
     tel: /\130\d{8}/,
     role: function(a, b) {
       const no = (this.id + 1) % 6
@@ -91,7 +97,7 @@ export default {
       // return data.groups.sort((a, b) => { return parseInt(a.distance) - parseInt(b.distance) })
     },
     activeGroup() {
-      let activeMembers = []
+      const activeMembers = []
       this.checkedList.forEach(item => {
         activeMembers.push(data.members[item])
       })

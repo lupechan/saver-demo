@@ -16,5 +16,84 @@ import _15 from './15.png'
 import _16 from './16.png'
 
 export default [
-  _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16
+  {
+    name: '朱燕',
+    avatar: _1,
+    sex: '女'
+  },
+  {
+    name: '王小强',
+    avatar: _2,
+    sex: '男'
+  },
+  {
+    name: '张红',
+    avatar: _3,
+    sex: '女'
+  },
+  {
+    name: 'John',
+    avatar: _4,
+    sex: '男'
+  },
+  {
+    name: 'brent',
+    avatar: _5,
+    sex: '男'
+  },
+  {
+    name: 'Aaron',
+    avatar: _6,
+    sex: '女'
+  },
+  {
+    name: '李文',
+    avatar: _7,
+    sex: '男'
+  },
+  {
+    name: 'Caleb',
+    avatar: _8,
+    sex: '男'
+  },
+  {
+    name: '刘美娜',
+    avatar: _9,
+    sex: '女'
+  },
+  {
+    name: '刘玉峰',
+    avatar: _10,
+    sex: '男'
+  },
+  {
+    name: 'Cameron',
+    avatar: _11,
+    sex: '男'
+  },
+  {
+    name: 'Eddie',
+    avatar: _12,
+    sex: '男'
+  },
+  {
+    name: '曾小北',
+    avatar: _13,
+    sex: '男'
+  },
+  {
+    name: 'Alex',
+    avatar: _14,
+    sex: '男'
+  },
+  {
+    name: 'Edison',
+    avatar: _15,
+    sex: '男'
+  },
+  {
+    name: '刘芬',
+    avatar: _16,
+    sex: '女'
+  },
 ]

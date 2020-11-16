@@ -4,10 +4,10 @@
       <div class="groupinfo-list">
         <div class="groupinfo-list__title list-item">搜救队信息</div>
         <div class="groupinfo-list__body">
-          <div><span>搜救队人数：</span><span>{{ groupCount || '' }}</span></div>
-          <div><span>与救助人员最近距离：</span><span>{{ groupNearDistance || '' }}</span></div>
-          <div><span>与救助人员最远距离：</span><span>{{ groupFarDistance || '' }}</span></div>
-          <div><span>最新定位时间：</span><span>{{ groupPosTime || '' }}</span></div>
+          <div><span>搜救队人数：</span><span>{{ groupCount }}</span></div>
+          <div><span>与救助人员最近距离：</span><span>{{ groupNearDistance }}</span></div>
+          <div><span>与救助人员最远距离：</span><span>{{ groupFarDistance }}</span></div>
+          <div><span>最新定位时间：</span><span>{{ groupPosTime }}</span></div>
           <div><span>物资：</span><span>无人机、搜救犬、医疗包</span></div>
         </div>
       </div>
@@ -35,10 +35,6 @@ import MemberItem from './MemberItem'
 import SkillsRadar from '@/components/SkillsRadar'
 import Mock from 'mockjs'
 
-const radarData = Mock.mock({
-  'radar|5': ['@integer(40, 90)']
-})
-
 export default {
   components: { MemberItem, SkillsRadar },
   props: {
@@ -49,35 +45,17 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      radarData: [],
+      groupNearDistance: '',
+      groupFarDistance: '',
+      groupPosTime: ''
+    }
+  },
   computed: {
     groupCount() {
       return this.data.length
-    },
-    groupNearDistance() {
-      let distanceSort = []
-      distanceSort = this.data.sort((a, b) => {
-        return parseInt(a.distance) - parseInt(b.distance)
-      })
-      return distanceSort[0] ?  distanceSort[0].distance : ''
-    },
-    groupFarDistance() {
-      let distanceSort = []
-      distanceSort = this.data.sort((a, b) => {
-        return parseInt(a.distance) - parseInt(b.distance)
-      })
-      return distanceSort[this.data.length - 1] ? distanceSort[this.data.length - 1].distance : ''
-    },
-    groupPosTime() {
-      let posTimeSort = []
-      posTimeSort = this.data.sort((a, b) => {
-        return Date.parse(a.posTime) - Date.parse(b.posTime)
-      })
-      return posTimeSort[posTimeSort.length - 1] ? posTimeSort[posTimeSort.length - 1].posTime : ''
-    }
-  },
-  data() {
-    return {
-      radarData: []
     }
   },
   watch: {
@@ -85,6 +63,16 @@ export default {
       this.radarData = Mock.mock({
         'radar|5': ['@integer(40, 90)']
       })
+      this.data.sort((a, b) => {
+        return parseInt(a.distance) - parseInt(b.distance)
+      })
+      this.groupNearDistance = this.data[0] ? this.data[0].distance : ''
+      this.data.reverse()
+      this.groupFarDistance = this.data[0] ? this.data[0].distance : ''
+      this.data.sort((a, b) => {
+        return Date.parse(b.posTime) - Date.parse(a.posTime)
+      })
+      this.groupPosTime = this.data[0] ? this.data[0].posTime : ''
     }
   },
   methods: {

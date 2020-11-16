@@ -9,7 +9,7 @@
         <div>国家</div>
         <el-select slot="append" v-model="selectData1" style="width:100px;" clearable placeholder="请选择">
           <el-option
-            v-for="item in options"
+            v-for="item in countryOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -21,7 +21,7 @@
         <div>城市</div>
         <el-select slot="append" v-model="selectData2" style="width:100px;" clearable placeholder="请选择">
           <el-option
-            v-for="item in options"
+            v-for="item in cityOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -33,7 +33,7 @@
         <div>日期</div>
         <el-select slot="append" v-model="selectData3" style="width:100px;" clearable placeholder="请选择">
           <el-option
-            v-for="item in options"
+            v-for="item in dateOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -45,7 +45,7 @@
         <div>报警方式</div>
         <el-select slot="append" v-model="selectData5" style="width:100px;" clearable placeholder="请选择">
           <el-option
-            v-for="item in options"
+            v-for="item in wayOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -57,7 +57,7 @@
         <div>处理结果</div>
         <el-select slot="append" v-model="selectData6" style="width:100px;" clearable placeholder="请选择">
           <el-option
-            v-for="item in options"
+            v-for="item in resultOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -158,7 +158,7 @@ export default {
       selectData5: '',
       selectData6: '',
       // 选择框数据
-      options: [{
+      countryOptions: [{
         value: '选项1',
         label: '印度'
       }, {
@@ -170,9 +170,46 @@ export default {
       }, {
         value: '选项4',
         label: '英国'
+      }],
+      cityOptions: [{
+        value: '选项1',
+        label: '孟买'
       }, {
-        value: '选项5',
-        label: '北京烤鸭'
+        value: '选项2',
+        label: '纽约'
+      }, {
+        value: '选项3',
+        label: '北京'
+      }, {
+        value: '选项4',
+        label: '伦敦'
+      }],
+      dateOptions: [{
+        value: '选项1',
+        label: '2016-05-05'
+      }, {
+        value: '选项2',
+        label: '2016-05-06'
+      }, {
+        value: '选项3',
+        label: '2016-05-07'
+      }, {
+        value: '选项4',
+        label: '2016-05-08'
+      }],
+      wayOptions: [{
+        value: '选项1',
+        label: '电话'
+      }, {
+        value: '选项2',
+        label: '短信'
+      }],
+      resultOptions: [{
+        value: '选项1',
+        label: '搜救成功'
+      }, {
+        value: '选项2',
+        label: '搜救失败'
       }],
       // 搜救表格数据
       tableData: [{
