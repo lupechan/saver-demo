@@ -81,6 +81,10 @@ const data = Mock.mock({
       const no = (this.msgid + 1) % 16
       return avatars[no].avatar
     },
+    sex: function() {
+      const no = (this.msgid + 1) % 16
+      return avatars[no].sex
+    },
     userId: '@id',
     creditId: 'DE4256795（护照）',
     username: function() {

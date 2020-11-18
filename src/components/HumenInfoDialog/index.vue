@@ -3,7 +3,7 @@
     <div class="humeninfo">
       <div class="humeninfo__row">
         <div class="humeninfo-avatar">
-          <img src="@/assets/map_images/1.png" alt="Avatar" width="100%">
+          <img :src="data.avatar" alt="Avatar" width="100%">
         </div>
         <div class="humeninfo-list">
           <div class="humeninfo-list__title">个人信息</div>
@@ -73,11 +73,15 @@ export default {
 
 <style lang="scss">
 .helperInfoDialog {
+  &.el-dialog__wrapper {
+    display: flex;
+    align-items: center;
+  }
   .el-dialog__body {
     padding-bottom: 0;
   }
   .el-dialog {
-    margin-top: 30px !important;
+    margin-top: 0 !important;
   }
 }
 .humeninfo {

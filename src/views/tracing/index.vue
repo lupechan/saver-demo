@@ -59,12 +59,12 @@
               :avatar="item.avatar"
               active-color="#0085FF"
               active-trigger="always"
-              :title="`搜救队： ${ rescueTeamData.name }`"
-              :sub-title="`${ item.role }：${ item.name }`"
+              :title="`${ item.name }`"
+              :sub-title="`${ item.tel }`"
               @click.native="handleStickClick"
             >
-              <div style="margin-bottom: 14px;">搜救能力：谈判、狙击、医务</div>
-              <div style="margin-bottom: 14px;">携带装备：搜救犬、无人机</div>
+              <div style="margin-bottom: 14px;">搜救能力：{{ item.skills }}</div>
+              <div style="margin-bottom: 14px;">携带装备：{{ item.equips }}</div>
               <div style="margin-bottom: 14px;">当前经纬度：{{ item.LNGuide[0] }}°N, {{ item.LNGuide[1] }}°W</div>
             </stickies>
           </template>
@@ -103,7 +103,7 @@ import Mock, { Random } from 'mockjs'
 
 const data = Mock.mock({
   'helpSeeker': {
-    avatar: avatars[0].avatars,
+    avatar: avatars[0].avatar,
     userId: '@id',
     username: avatars[0].name,
     sex: avatars[0].sex,
@@ -140,6 +140,9 @@ const data = Mock.mock({
       posTime: '@datetime("2020.MM.dd HH:mm")',
       skills: function() {
         return ['狙击', '谈判', '医务', '搜救'][~~(Math.random() * 4)]
+      },
+      equips: function() {
+        return ['无人机', '搜救犬', '医疗包'][~~(Math.random() * 3)]
       },
       LNGuide: ['@integer(0, 180)', '@integer(0, 90)']
     }],
