@@ -7,7 +7,7 @@
     <div class="head-select">
       <div class="head-select-item">
         <div>国家</div>
-        <el-select slot="append" v-model="selectData1" style="width:100px;" clearable placeholder="请选择">
+        <el-select slot="append" v-model="selectData1" style="width:100px;" clearable placeholder="请选择" @change="handleCountryChange">
           <el-option
             v-for="item in countryOptions"
             :key="item.value"
@@ -171,31 +171,107 @@ export default {
       selectData6: '',
       // 选择框数据
       countryOptions: [{
-        value: '选项1',
-        label: '印度'
+        value: '印度',
+        label: '印度',
+        children: [
+          {
+            value: '德里',
+            label: '德里'
+          },
+          {
+            value: '孟买',
+            label: '孟买'
+          },
+          {
+            value: '加尔各答',
+            label: '加尔各答'
+          },
+          {
+            value: '班加罗尔',
+            label: '班加罗尔'
+          },
+          {
+            value: '海得拉巴',
+            label: '海得拉巴'
+          }
+        ]
       }, {
-        value: '选项2',
-        label: '美国'
+        value: '美国',
+        label: '美国',
+        children: [
+          {
+            value: '纽约',
+            label: '纽约'
+          },
+          {
+            value: '宾夕法尼亚',
+            label: '宾夕法尼亚'
+          },
+          {
+            value: '新泽西',
+            label: '新泽西'
+          },
+          {
+            value: '特拉华',
+            label: '特拉华'
+          },
+          {
+            value: '马里兰',
+            label: '马里兰'
+          }
+        ]
       }, {
-        value: '选项3',
-        label: '中国'
+        value: '中国',
+        label: '中国',
+        children: [
+          {
+            value: '北京',
+            label: '北京'
+          },
+          {
+            value: '上海',
+            label: '上海'
+          },
+          {
+            value: '深圳',
+            label: '深圳'
+          },
+          {
+            value: '广州',
+            label: '广州'
+          },
+          {
+            value: '长沙',
+            label: '长沙'
+          }
+        ]
       }, {
-        value: '选项4',
-        label: '英国'
+        value: '英国',
+        label: '英国',
+        children: [
+          {
+            value: '伦敦',
+            label: '伦敦'
+          },
+          {
+            value: '爱丁堡',
+            label: '爱丁堡'
+          },
+          {
+            value: '加的夫',
+            label: '加的夫'
+          },
+          {
+            value: '贝尔法斯特',
+            label: '贝尔法斯特'
+          },
+          {
+            value: '伯明翰',
+            label: '伯明翰'
+          }
+        ]
       }],
-      cityOptions: [{
-        value: '选项1',
-        label: '孟买'
-      }, {
-        value: '选项2',
-        label: '纽约'
-      }, {
-        value: '选项3',
-        label: '北京'
-      }, {
-        value: '选项4',
-        label: '伦敦'
-      }],
+      cityOptions: [],
       dateOptions: [{
         value: '选项1',
         label: '2016-05-05'
@@ -350,6 +426,25 @@ export default {
         address: '上海市普陀区金沙江路 1518 弄',
         opration: '1'
       }]
+    }
+  },
+  methods: {
+    handleCountryChange(val) {
+      this.selectData2 = ''
+      switch (val) {
+        case '印度':
+          this.cityOptions = this.countryOptions[0].children
+          break
+        case '美国':
+          this.cityOptions = this.countryOptions[1].children
+          break
+        case '中国':
+          this.cityOptions = this.countryOptions[2].children
+          break
+        case '英国':
+          this.cityOptions = this.countryOptions[3].children
+          break
+      }
     }
   }
 }
